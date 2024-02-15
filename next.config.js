@@ -3,7 +3,4 @@ const withNextra = require('nextra')({
   themeConfig: './theme.config.tsx',
 })
 
-module.exports = {
-  output: 'export',
-  withNextra
-}
+module.exports = withNextra
