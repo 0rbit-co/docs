@@ -1,0 +1,28 @@
+import Image from 'next/image'
+ 
+# Architecture
+
+The __0rbit__ architecture is pretty simple and easy to understand if you are aware about the working of the `ao` processes on the Arweave network.
+
+## High Level Overview
+
+![0rbit Architecture](assets/images/architecture/main.png)
+
+
+The __0rbit__ consists of the following components:
+
+#### Main `ao` process 
+  - The process which user's `ao` process interacts with to get the data.
+
+#### 0rbit Nodes
+  - The network of nodes from which a node fetches the request created by the __main `ao` process__ and then processes it and sends the response back to the __main `ao` process__.
+
+### Step by Step Flow
+
+1. User's `ao` process sends a request to the __main `ao` process__.
+2. The __main `ao` process__ then sends the request transaction data to the __Arweave network__.
+3. One of the nodes from the __0rbit Nodes network__ fetches the request transaction data.
+4. & 5.  The nodes processes the request and fetches the off-chain values.
+6. The values are then cross-checked within the __0rbit Nodes network__ and then the response is generated.
+7. The node sends the response to the __main `ao` process__.
+8. The __main `ao` process__ then sends the response to the user's `ao` process.

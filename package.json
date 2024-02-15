@@ -1,0 +1,30 @@
+{
+  "name": "0rbit-developer-docs",
+  "version": "0.0.1",
+  "description": "0rbit Developer Docs to help you get started with 0rbit",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0rbit-co/docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0rbit-co/docs/issues"
+  },
+  "homepage": "https://github.com/0rbit-co/docs#readme",
+  "dependencies": {
+    "next": "^13.0.6",
+    "nextra": "latest",
+    "nextra-theme-docs": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
+  }
+}
