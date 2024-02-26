@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Steps } from 'nextra/components'
  
 # Architecture
 
@@ -19,10 +20,29 @@ The __0rbit__ consists of the following components:
 
 ### Step by Step Flow
 
-1. User's `ao` process sends a request to the __main `ao` process__.
-2. The __main `ao` process__ then sends the request transaction data to the __Arweave network__.
-3. One of the nodes from the __0rbit Nodes network__ fetches the request transaction data.
-4. & 5.  The nodes processes the request and fetches the off-chain values.
-6. The values are then cross-checked within the __0rbit Nodes network__ and then the response is generated and stored on __Arweave Network.__
-7. The node sends the response to the __main `ao` process__.
-8. The __main `ao` process__ then sends the response to the user's `ao` process.
+<Steps>
+### From USER
+User's `ao` process sends a request to the __main `ao` process__.
+ 
+### Publishing request on Arweave
+The __main `ao` process__ then sends the request transaction data to the __Arweave network__.
+
+### Fetching the request
+One of the nodes from the __0rbit Nodes network__ fetches the request transaction data.
+
+### Processing the request
+The nodes processes the request.
+
+### Collecting the response
+The nodes fetches the response from the ISP.
+
+### Decentralized 0racle Network
+The values are then cross-checked within the __0rbit Nodes network__ and then the response is generated and published on __Arweave Network.__
+
+### Getting the response
+The node sends the response to the __main `ao` process__.
+
+### Receiving the response
+The __main `ao` process__ then sends the response to the user's `ao` process.
+
+</Steps>
