@@ -30,20 +30,60 @@ const headProp = () => {
 
 
 const config: DocsThemeConfig = {
-  logo: <span>0rbit</span>,
   project: {
     link: 'https://github.com/0rbit-co',
   },
+  useNextSeoProps() {
+    return {
+      titleTemplate: '0rbit | %s',
+      defaultTitle: '0rbit Developer Docs',
+      description: '0rbit Developer Docs',
+      openGraph:{
+        title: '0rbit Developer Docs',
+        description: '0rbit Developer Docs',
+        images: [
+          {
+            url: 'https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg'
+          }
+        ]
+      },
+      twitter: {
+        handle: '@0rbitco',
+        site: '@site',
+        cardType: 'summary_large_image',
+      },
+    }
+  },
+  editLink:{
+    component: null
+  },
+  logo: (
+    <>
+      <img
+        src="https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/Orbit%20Icon.svg"
+        alt="0rbit"
+        width="40"
+        height="40"
+      />
+      <span style={{ marginLeft: '.4em', fontWeight: 800 }}>
+        0rbit
+      </span>
+    </>
+  ),
+  logoLink: 'http://www.0rbit.co',
   navigation: true,
   head: headProp,
   faviconGlyph: "💫",
   chat: {
     link: 'https://discord.gg/mQg3kqgXDk',
   },
-  docsRepositoryBase: 'https://github.com/0rbit-co/docs/blob/main',
+  // docsRepositoryBase: 'https://github.com/0rbit-co/docs/blob/main',
   footer: {
     text: '0rbit Developer Docs',
   },
+  feedback:{
+    content: null
+  }
 }
 
 export default config
