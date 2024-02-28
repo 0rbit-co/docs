@@ -1,15 +1,15 @@
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs'
-import Head from 'next/head'
+import { Analytics } from "@vercel/analytics/react"
 import { useRouter } from 'next/router'
 
 const headProp = () => {
   const { asPath, defaultLocale, locale } = useRouter()
   const { frontMatter } = useConfig()
   const url =
-    'https://0rbit-docs.vercel.app/' +
+    'https://docs.0rbit.co/' +
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
   return  (
-    <Head>
+    <head>
       <title>0rbit Developer Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="0rbit Developer Docs" />
@@ -24,7 +24,7 @@ const headProp = () => {
       <meta property="og:image" content='assets/images/logo/main.svg' />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || '0rbit'} />
-    </Head>
+    </head>
   )
 }
 
@@ -33,6 +33,11 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/0rbit-co',
   },
+  main: ({ children }) => (<>
+    {children}
+    <Analytics />
+</>) 
+  ,
   useNextSeoProps() {
     return {
       titleTemplate: '0rbit | %s',
