@@ -24,6 +24,9 @@ const headProp = () => {
       <meta property="og:image" content='assets/images/logo/main.svg' />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || '0rbit'} />
+      <meta property="twitter:image" content="https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg"></meta>
+      <meta property="twitter:title" content="0rbit Developer Docs"></meta>
+      <meta property="twitter:description" content="0rbit Developer Docs"></meta>
     </head>
   )
 }
