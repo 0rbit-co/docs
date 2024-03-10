@@ -1,15 +1,14 @@
 import { Steps } from 'nextra/components'
 import Image from 'next/image'
 
-# Your First Get Request 
-Create your first `Get` request using the `0rbit`
+# Your First Post Request
 
-At core `0rbit` is a `ao` process, which means it can be used by an `ao` process.
+Create your first `Post` request using `0rbit`
 
 ## Prerequisite
 
 - Basic understanding of `ao`
-- Basic understanding of Arweave.
+- Basic understanding of `Arweave`
 
 ## Install AOS
 <Steps>
@@ -30,6 +29,7 @@ At core `0rbit` is a `ao` process, which means it can be used by an `ao` process
 
 </Steps>
 
+
 ## AOS Editor
 <Steps>
 
@@ -40,28 +40,46 @@ At core `0rbit` is a `ao` process, which means it can be used by an `ao` process
     This will start the editor for you to write the commands to interact with the `ao` processes.
 
 ### Command to interact with the `ao` processes
-    
     #### Create a variable
     ```bash
     _0RBIT= "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
     ```
     This will create a variable `_0RBIT` and assign the value of the process ID of the __0rbit's GET `ao` process__.
 
-    #### Create a `Get` request
+    #### Create a `Post` request
     ```bash
+    local json = require("json")
     Send({
         Target = _0RBIT,
-        Action = "Get-Real-Data",
-        Url = "https://dummyjson.com/products"
+        Action = "Post-Real-Data",
+        Url = "https://arweave.net/graphql",
+        Body = json.encode({
+            query = [[
+                query {
+                    transactions(
+                        owners: ["vh-NTHVvlKZqRxc8LyyTNok65yQ55a_PJ1zWLb9G2JI"]
+                    ) {
+                        edges {
+                            node {
+                                id
+                            }
+                        }
+                    }
+                }
+            ]],
+            variables = {}
+        })
     })
     ```
     In this command:
+    - `json` is a library that is required to encode the data into json format.
     - `TARGET` is the process ID of the ao process user wants to interact with, which in this case is __0rbit's GET `ao` process__.
-    - `Action` is the specific tag required by __0rbit__ to perform the `Get` request.
-    - `Url` is the URL of the website from which we want to get the data.
+    - `Action` is the specific tag required by __0rbit__ to perform the `Post` request.
+    - `Url` is the Http URL where the request will be sent.
+    - `Body` is the data that will be sent to the Http URL.
     
-    This will create a `Get` request and send it to the __0rbit's GET `ao` process__.
-      
+    This will create a `Post` request and send it to the __0rbit's GET `ao` process__.
+
 ### Send the command
     ```bash
     .done
@@ -80,10 +98,10 @@ At core `0rbit` is a `ao` process, which means it can be used by an `ao` process
     <details>
     <summary>At last your terminal will look like this👇🏻</summary>
     #### It has received the response from the __0rbit__.
-    ![Last Look of the terminal](../../assets/images/examples/basic-get-request/last-look.png)
+    ![Last Look of the terminal](../../assets/images/examples/basic-post-request/last-look.png)
     </details>
 
 </Steps>
 
-> Voila! You have successfully created your first `Get` request to the __0rbit__. 🎉🎉
+> Voila! You have successfully created your first `Post` request to the __0rbit__. 🎉🎉
 
