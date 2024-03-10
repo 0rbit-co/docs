@@ -1,6 +1,7 @@
 {
   "index": "Introduction",
   "fetch-http-data": "Fetch HTTP Data",
+  "post-http-data": "Post HTTP Data",
   "examples": "Examples",
   "architecture": "Architecture",
   "contact": {
