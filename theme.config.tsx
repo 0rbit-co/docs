@@ -1,6 +1,7 @@
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs'
 import { Analytics } from "@vercel/analytics/react"
 import { useRouter } from 'next/router'
+import { tree } from 'next/dist/build/templates/app-page'
 
 const headProp = () => {
   const { asPath, defaultLocale, locale } = useRouter()
@@ -8,7 +9,7 @@ const headProp = () => {
   const url =
     'https://docs.0rbit.co/' +
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
-  return  (
+  return (
     <head>
       <title>0rbit Developer Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,9 +19,9 @@ const headProp = () => {
         content="0rbit Developer Docs"
       />
       <meta
-          property="og:description"
-          content={frontMatter.description || '0rbit Developer Docs'}
-        />
+        property="og:description"
+        content={frontMatter.description || '0rbit Developer Docs'}
+      />
       <meta property="og:image" content='assets/images/logo/main.svg' />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || '0rbit'} />
@@ -39,14 +40,14 @@ const config: DocsThemeConfig = {
   main: ({ children }) => (<>
     {children}
     <Analytics />
-</>) 
+  </>)
   ,
   useNextSeoProps() {
     return {
       titleTemplate: '0rbit | %s',
       defaultTitle: '0rbit Developer Docs',
       description: '0rbit Developer Docs',
-      openGraph:{
+      openGraph: {
         title: '0rbit Developer Docs',
         description: '0rbit Developer Docs',
         images: [
@@ -62,8 +63,8 @@ const config: DocsThemeConfig = {
       },
     }
   },
-  editLink:{
-    component: null
+  editLink: {
+    text: 'Edit this page on GitHub',
   },
   logo: (
     <>
@@ -85,13 +86,26 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://discord.gg/mQg3kqgXDk',
   },
-  // docsRepositoryBase: 'https://github.com/0rbit-co/docs/blob/main',
+  docsRepositoryBase: 'https://github.com/0rbit-co/docs/blob/main',
   footer: {
-    text: '0rbit Developer Docs',
+    text: (
+      <span>
+        MIT {new Date().getFullYear()} ©{' '}
+        <a href="https://0rbit.co" target="_blank">
+          0rbit
+        </a>
+        .
+      </span>
+    )
   },
-  feedback:{
-    content: null
-  }
+  feedback: {
+    content: 'Is this page helpful?',
+    labels: 'feedback',
+  },
+  darkMode: true,
+  sidebar: {
+    autoCollapse: true,
+  },
 }
 
 export default config
