@@ -1,8 +1,17 @@
 {
+  "*": {
+    "type": "page"
+  },
   "index": "Introduction",
+  "Features": {
+    "type": "separator"
+  },
   "fetch-http-data": "Fetch HTTP Data",
   "post-http-data": "Post HTTP Data",
   "examples": "Examples",
+  "Architecture": {
+    "type": "separator"
+  },
   "architecture": "Architecture",
   "contact": {
     "title": "Contact ↗",
