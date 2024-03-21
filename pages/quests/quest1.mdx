@@ -226,9 +226,9 @@ Handlers.add(
 > 
  
 
-**Checkpoint 8: **🖨** Retrieving Token Price**
+**Checkpoint 7: **🖨** Retrieving Token Price**
 
-8.1 Handler Definition
+7.1 Handler Definition
 
 ```
 Handlers.add(
@@ -237,14 +237,14 @@ Handlers.add(
     function(msg)
 ```
 
-8.2 Extracting Token and Price
+7.2 Extracting Token and Price
 
 ```
 local token = msg.Tags.Token
 local price = TOKEN_PRICES[token].price
 ```
 
-8.3 Checking Price Availability
+7.3 Checking Price Availability
 
 ```lua
 if price == 0 then
@@ -261,7 +261,7 @@ else
 
 ```
 
-8.4 Sending Price to the Sender
+7.4 Sending Price to the Sender
 
 ```lua
 ao.send({
@@ -275,7 +275,7 @@ ao.send({
 
 ```
 
-8.5 Logging for Debugging
+7.5 Logging for Debugging
 
 ```
 table.insert(
@@ -338,9 +338,9 @@ Handlers.add(
 > Remember, just like planets in space, you're moving forward on your own journey. Keep taking steps and you'll reach your destination. 🚀
 > 
 
-**Checkpoint 9: 🔥Token Price Update**
+**Checkpoint 8: 🔥Token Price Update**
 
-9.1 CRON Function for Token Price Update
+8.1 CRON Function for Token Price Update
 
 ```
 Handlers.add(
@@ -365,7 +365,7 @@ Handlers.add(
 )
 ```
 
-9.2: Handling Received Data for Token Price Update
+8.2: Handling Received Data for Token Price Update
 
 ```
 Handlers.add(
@@ -384,13 +384,13 @@ Handlers.add(
 > Congratulations on making it this far! 🥳 You're already part of our family. Don't forget to join us on <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> for more discussions and updates. We're excited to have you with us on this journey! 🚀
 > 
 
-**Checkpoint 10: 📝 Close the editor**
+**Checkpoint 9: 📝 Close the editor**
 
 `.done`
 
 This will end your editor session, compile the commands and execute it.
 
-**Checkpoint 11: ✅ Check the Inbox**
+**Checkpoint 10: ✅ Check the Inbox**
 
 Now you can check the inbox of your `ao` process to see the response from the **0rbit**.
 
