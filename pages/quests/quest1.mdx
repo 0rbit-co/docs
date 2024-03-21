@@ -1,0 +1,503 @@
+# Price Feed Bot
+
+**Challenge**: The Quest for 0rbit Points
+
+🌟Your mission is to create a bot that responds to user queries for token prices, fetching the data using 0rbit's ao process and the CoinGecko API.
+
+**📚**The bot will be evaluated based on the live demo and the codebase. Submit a PR <a href="https://github.com/0rbit-co/quest" style={{ color: 'white', textDecoration: 'underline' }}>here</a> with the Name= `price-feed-bot-${username}` and with the codebase and demo link in the description.
+
+💫 Meanwhile, Meet other builders working on this quest and get help in the 0rbit’s <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> Channel!
+
+**📝Pre-Requisites:**
+
+A basic understanding of aos
+
+**Checkpoint 0: 📦 Environment**
+
+1. Node (≥v20.0)
+2. Yarn or npm
+3. A code editor of your choice
+
+**Checkpoint 1: 📝 Start the editor**
+
+`.editor`
+
+This will start the editor for you to write the commands to interact with the `ao` processes.
+
+**Checkpoint 2: 🛠 JSON Module**
+
+To begin, we need to import the JSON module into our **aos** process. 
+
+`local json = require("json")`
+
+The JSON module is required in your script to handle JSON data. In the provided codebase, you are interacting with an API (api.coingecko.com) to fetch cryptocurrency prices. The data returned by this API is typically in JSON format. Therefore, you need to parse this JSON data to extract the required information, such as cryptocurrency prices. We will look into how to do this in a later step.
+
+For more detailed information on how to use the JSON module, you can visit the documentation at: [JSON Module Documentation](https://cookbook_ao.arweave.dev/guides/aos/modules/json.html)
+
+> Congratulations! You've just written your first line for the quest! 🎉
+> 
+
+**Checkpoint 3: 🧭 Constants**
+
+`_0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"`
+
+This constant represents the process ID of the 0rbit process. It is a unique identifier used for communication or interaction with the 0rbit’s ao process.
+
+`BASE_URL = "[https://api.coingecko.com/api/v3/simple/price](https://api.coingecko.com/api/v3/simple/price)"`
+
+This constant holds the base URL for the Coingecko API.
+
+> Remember, every small step counts towards progress! 🚀
+> 
+
+**Checkpoint 4: 📦 Token Prices Initialization**
+
+We initialize the **`TOKEN_PRICES`** table, which stores information about token prices. If the **`TOKEN_PRICES`** table is not already defined, we initialize it with default values for Bitcoin (BTC), Ethereum (ETH), and Solana (SOL).
+
+```lua
+TOKEN_PRICES = TOKEN_PRICES or {
+	BTC = {
+		coingecko_id = "bitcoin",
+		price = 0,
+		last_update_timestamp = 0
+	},
+	ETH = {
+		coingecko_id = "ethereum",
+		price = 0,
+		last_update_timestamp = 0
+	},
+	SOL = {
+		coingecko_id = "solana",
+		price = 0,
+		last_update_timestamp = 0
+	}
+}
+```
+
+> Keep up the momentum, you're doing great! 🚀
+> 
+
+**Checkpoint 5: 🔄 Requested Tokens and Logging Initialization**
+
+Initialize the **`REQUESTED_TOKENS` and `LOGS`** table, which stores information about tokens that have been requested to be added to the price feed
+
+`REQUESTED_TOKENS = REQUESTED_TOKENS or {}`
+
+`LOGS = LOGS or {}`
+
+> You're halfway there! Keep up the great work, and let's tackle the next checkpoint together! 🎉
+> 
+
+**Checkpoint 6: 🛠️ Token Addition Handler**
+
+Define a handler for adding tokens to the price feed.
+
+6.1: Handler Definition
+
+```lua
+Handlers.add(
+	"AddToken",
+	Handlers.utils.hasMatchingTag("Action", "Add-Token"),
+	function(msg)
+```
+
+6.2: Checking Process Owner and Extracting Token Information
+
+```lua
+if msg.From == ao.id then
+	local token = msg.Tags.Token
+  local coingecko_id = msg.Tags.CoingeckoId
+```
+
+6.3: Adding token to TOKEN_PRICES Table
+
+```
+if not TOKEN_PRICES[token] then
+    TOKEN_PRICES[token].price = 0
+    TOKEN_PRICES[token].coingecko_id = coingecko_id
+    ao.send({
+        Target = msg.From,
+        Tags = {
+            Action = 'Add Token Success',
+            ['Message-Id'] = msg.Id,
+            Token = token
+        }
+    })
+else
+    ao.send({
+        Target = msg.From,
+        Tags = {
+            Action = 'Add Token Error',
+            ['Message-Id'] = msg.Id,
+            Error = 'Token already exists'
+        }
+    })
+end
+```
+
+6.4 Logging for Debugging
+
+```
+table.insert(
+    LOGS,
+    {
+        From = msg.From,
+        Tag = "Add-Token",
+        Data = {
+            Token = token,
+            Message = "Success"
+        }
+    }
+)
+```
+
+👀 At last your handler will look like this 👇🏻
+
+```
+Handlers.add(
+    "AddToken",
+    Handlers.utils.hasMatchingTag("Action", "Add-Token"),
+    function(msg)
+        if msg.From == ao.id then
+            local token = msg.Tags.Token
+            local coingecko_id = msg.Tags.CoingeckoId
+
+            if not TOKEN_PRICES[token] then
+                TOKEN_PRICES[token].price = 0
+                TOKEN_PRICES[token].coingecko_id = coingecko_id
+                ao.send({
+                    Target = msg.From,
+                    Tags = {
+                        Action = 'Add Token Success',
+                        ['Message-Id'] = msg.Id,
+                        Token = token
+                    }
+                })
+            else
+                ao.send({
+                    Target = msg.From,
+                    Tags = {
+                        Action = 'Add Token Error',
+                        ['Message-Id'] = msg.Id,
+                        Error = 'Token already exists'
+                    }
+                })
+            end
+
+            -- For Debugging
+            table.insert(
+                LOGS,
+                {
+                    From = msg.From,
+                    Tag = "Add-Token",
+                    Data = {
+                        Token = token,
+                        Message = "Success"
+                    }
+                }
+            )
+        else
+            ao.send({
+                Target = msg.From,
+                Tags = {
+                    Action = 'Add Token Error',
+                    ['Message-Id'] = msg.Id,
+                    Error = 'Only the Process Owner can add tokens'
+                }
+            })
+
+            -- For Debugging
+            table.insert(
+                LOGS,
+                {
+                    From = msg.From,
+                    Tag = "Add-Token",
+                    Data = {
+                        Message = "Not Owner"
+                    }
+                }
+            )
+        end
+    end
+)
+```
+
+> You just created your first handler! 🎉
+> 
+
+**Checkpoint 7: **🖨** Handler for Token Addition Requests**
+
+7.1 Handler Definition
+
+```
+Handlers.add(
+    "RequestAddToken",
+    Handlers.utils.hasMatchingTag("Action", "Request-Add-Token"),
+    function(msg)
+```
+
+7.2 Extracting Token and Chain ID
+
+```
+local token = msg.Tags.Token
+local chain_id = msg.Tags.ChainId
+```
+
+7.3 Asserting Token and Chain ID Types
+
+```
+assert(type(token) == "string", "Token Name for token addition is required")
+assert(type(chain_id) == "string", "Chain Id for token addition is required")
+```
+
+7.4 Storing Requested Token Information
+
+```lua
+REQUESTED_TOKENS[token] = chain_id
+```
+
+7.5 Sending Confirmation Message
+
+```
+ao.send {
+    Target = msg.From,
+    Tags = {
+        Action = 'Token Addition Request'
+    },
+    Data = "Your token request addition submitted!"
+}
+```
+
+👀 At last your handler will look like this 👇🏻
+
+```
+Handlers.add(
+    "RequestAddToken",
+    Handlers.utils.hasMatchingTag("Action", "Request-Add-Token"),
+    function(msg)
+        local token = msg.Tags.Token
+        local chain_id = msg.Tags.ChainId
+
+        assert(type(token) == "string", "Token Name for token addition is required")
+        assert(type(chain_id) == "string", "Chain Id for token addition is required")
+
+        REQUESTED_TOKENS[token] = chain_id
+
+        ao.send {
+            Target = msg.From,
+            Tags = {
+                Action = 'Token Addition Request'
+            },
+            Data = "Your token request addition submitted!"
+        }
+        table.insert(
+            LOGS,
+            {
+                From = msg.From,
+                Tag = "Request-Add-Token",
+                Data = {
+                    Token = token,
+                    ChainId = chain_id,
+                    Message = "Success"
+                }
+            }
+        )
+    end
+)
+```
+
+> Congratulations on making it this far! 🥳 You're already part of our family. Don't forget to join us on <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> for more discussions and updates. We're excited to have you with us on this journey! 🚀
+> 
+
+**Checkpoint 8: **🖨** Retrieving Token Price**
+
+8.1 Handler Definition
+
+```
+Handlers.add(
+    "GetPrice",
+    Handlers.utils.hasMatchingTag("Action", "Get-Price"),
+    function(msg)
+```
+
+8.2 Extracting Token and Price
+
+```
+local token = msg.Tags.Token
+local price = TOKEN_PRICES[token].price
+```
+
+8.3 Checking Price Availability
+
+```lua
+if price == 0 then
+    ao.send({
+        Target = msg.From,
+        Tags = {
+            Action = 'Get-Price Error',
+            ['Message-Id'] = msg.Id,
+            Error = 'Price not available! Please contact @0rbitco on X'
+        }
+    })
+    return
+else
+
+```
+
+8.4 Sending Price to the Sender
+
+```lua
+ao.send({
+    Target = msg.From,
+    Tags = {
+        Action = 'Get-Price',
+        ['Message-Id'] = msg.Id,
+        Price = tostring(price)
+    }
+})
+
+```
+
+8.5 Logging for Debugging
+
+```
+table.insert(
+    LOGS,
+    {
+        From = msg.From,
+        Tag = "Request-Add-Token",
+        Data = {
+            Token = token,
+            Message = "Success"
+        }
+    }
+)
+```
+
+👀 At last your handler will look like this 👇🏻
+
+```
+Handlers.add(
+    "GetPrice",
+    Handlers.utils.hasMatchingTag("Action", "Get-Price"),
+    function(msg)
+        local token = msg.Tags.Token
+        local price = TOKEN_PRICES[token].price
+        if price == 0 then
+            ao.send({
+                Target = msg.From,
+                Tags = {
+                    Action = 'Get-Price Error',
+                    ['Message-Id'] = msg.Id,
+                    Error = 'Price not available! Please contact @0rbitco on X'
+                }
+            })
+            return
+        else
+            ao.send({
+                Target = msg.From,
+                Tags = {
+                    Action = 'Get-Price',
+                    ['Message-Id'] = msg.Id,
+                    Price = tostring(price)
+                }
+            })
+        end
+        table.insert(
+            LOGS,
+            {
+                From = msg.From,
+                Tag = "Request-Add-Token",
+                Data = {
+                    Token = token,
+                    Message = "Success"
+                }
+            }
+        )
+    end
+)
+```
+
+> Remember, just like planets in space, you're moving forward on your own journey. Keep taking steps and you'll reach your destination. 🚀
+> 
+
+**Checkpoint 9: 🔥Token Price Update**
+
+9.1 CRON Function for Token Price Update
+
+```
+Handlers.add(
+    "CronTick",
+    Handlers.utils.hasMatchingTag("Action", "Cron"),
+    function()
+        local url;
+        local token_ids;
+
+        for _, v in pairs(TOKEN_PRICES) do
+            token_ids = token_ids .. v.coingecko_id .. ","
+        end
+
+        url = BASE_URL .. "?ids=" .. token_ids .. "&vs_currencies=usd"
+
+        ao.send({
+            Target = _0RBIT,
+            Action = "Get-Real-Data",
+            Url = url
+        })
+    end
+)
+```
+
+9.2: Handling Received Data for Token Price Update
+
+```
+Handlers.add(
+    "ReceivingData",
+    Handlers.utils.hasMatchingTag("Action", "Receive-data-feed"),
+    function(msg)
+        local res = json.decode(msg.Data)
+        for k, v in pairs(res) do
+            TOKEN_PRICES[k].price = v
+            TOKEN_PRICES[k].last_update_timestamp = msg.Timestamp
+        end
+    end
+)
+```
+
+> You've come so far already! Just a little further, and you'll reach your goal👏
+> 
+
+**Checkpoint 10: 📝 Close the editor**
+
+`.done`
+
+This will end your editor session, compile the commands and execute it.
+
+**Checkpoint 11: ✅ Check the Inbox**
+
+Now you can check the inbox of your `ao` process to see the response from the **0rbit**.
+
+`Inbox[#Inbox].Data`
+
+> *Voila! You have successfully completed your first Quest to the **0rbit**. 🎉🎉*
+> 
+
+**Submission:**
+
+```lua
+Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim", Quest = "Price-Bot", User = <username>})
+```
+
+**Points:**
+
+> Note: It will take a little time after we recieve your request. Once you get the message for Credit-Notice run following to check balance.
+> 
+
+> In the meantime, feel free to say hi to us on our <a href="https://twitter.com/0rbitco" style={{color: "white", textDecoration: "underline"}}>Twitter</a> page! 😉
+> 
+- 200000 OP (0rbit Points) will be awarded to PR after the successful evaluation.
+- You can check your OP balance by using the following commands in your terminal
+
+```lua
+aos> Send({Target= "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc", Action = "Balance"})
+```

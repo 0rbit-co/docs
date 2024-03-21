@@ -11,6 +11,7 @@
     "type": "separator"
   },
   "architecture": "Architecture",
+  "quests" : "Quests",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
