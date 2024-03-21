@@ -224,90 +224,7 @@ Handlers.add(
 
 > You just created your first handler! 🎉
 > 
-
-**Checkpoint 7: **🖨** Handler for Token Addition Requests**
-
-7.1 Handler Definition
-
-```
-Handlers.add(
-    "RequestAddToken",
-    Handlers.utils.hasMatchingTag("Action", "Request-Add-Token"),
-    function(msg)
-```
-
-7.2 Extracting Token and Chain ID
-
-```
-local token = msg.Tags.Token
-local chain_id = msg.Tags.ChainId
-```
-
-7.3 Asserting Token and Chain ID Types
-
-```
-assert(type(token) == "string", "Token Name for token addition is required")
-assert(type(chain_id) == "string", "Chain Id for token addition is required")
-```
-
-7.4 Storing Requested Token Information
-
-```lua
-REQUESTED_TOKENS[token] = chain_id
-```
-
-7.5 Sending Confirmation Message
-
-```
-ao.send {
-    Target = msg.From,
-    Tags = {
-        Action = 'Token Addition Request'
-    },
-    Data = "Your token request addition submitted!"
-}
-```
-
-👀 At last your handler will look like this 👇🏻
-
-```
-Handlers.add(
-    "RequestAddToken",
-    Handlers.utils.hasMatchingTag("Action", "Request-Add-Token"),
-    function(msg)
-        local token = msg.Tags.Token
-        local chain_id = msg.Tags.ChainId
-
-        assert(type(token) == "string", "Token Name for token addition is required")
-        assert(type(chain_id) == "string", "Chain Id for token addition is required")
-
-        REQUESTED_TOKENS[token] = chain_id
-
-        ao.send {
-            Target = msg.From,
-            Tags = {
-                Action = 'Token Addition Request'
-            },
-            Data = "Your token request addition submitted!"
-        }
-        table.insert(
-            LOGS,
-            {
-                From = msg.From,
-                Tag = "Request-Add-Token",
-                Data = {
-                    Token = token,
-                    ChainId = chain_id,
-                    Message = "Success"
-                }
-            }
-        )
-    end
-)
-```
-
-> Congratulations on making it this far! 🥳 You're already part of our family. Don't forget to join us on <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> for more discussions and updates. We're excited to have you with us on this journey! 🚀
-> 
+ 
 
 **Checkpoint 8: **🖨** Retrieving Token Price**
 
@@ -464,7 +381,7 @@ Handlers.add(
 )
 ```
 
-> You've come so far already! Just a little further, and you'll reach your goal👏
+> Congratulations on making it this far! 🥳 You're already part of our family. Don't forget to join us on <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> for more discussions and updates. We're excited to have you with us on this journey! 🚀
 > 
 
 **Checkpoint 10: 📝 Close the editor**
