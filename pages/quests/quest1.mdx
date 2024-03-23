@@ -1,17 +1,15 @@
 # Price Feed Bot
 
-**Challenge**: The Quest for 0rbit Points
+## Challenge: The Quest for 0rbit Points
 
-🌟Your mission is to create a bot that responds to user queries for token prices, fetching the data using 0rbit's ao process and the CoinGecko API.
+ - 🌟Your mission is to create a bot that responds to user queries for token prices, fetching the data using 0rbit's ao process and the CoinGecko API.
+ -  **📚**The bot will be evaluated based on the live demo and the codebase. Submit a PR <a href="https://github.com/0rbit-co/quest" style={{ color: 'white', textDecoration: 'underline' }}>here</a> with the Name= `price-feed-bot-${username}` and with the codebase and demo link in the description.
+- 💫 Meanwhile, Meet other builders working on this quest and get help in the 0rbit’s <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> Channel!
 
-**📚**The bot will be evaluated based on the live demo and the codebase. Submit a PR <a href="https://github.com/0rbit-co/quest" style={{ color: 'white', textDecoration: 'underline' }}>here</a> with the Name= `price-feed-bot-${username}` and with the codebase and demo link in the description.
+## 📝Pre-Requisites:
 
-💫 Meanwhile, Meet other builders working on this quest and get help in the 0rbit’s <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> Channel!
-
-**📝Pre-Requisites:**
-
-A basic understanding of aos
-
+>A basic understanding of aos
+##
 **Checkpoint 0: 📦 Environment**
 
 1. Node (≥v20.0)
@@ -111,7 +109,7 @@ if msg.From == ao.id then
 
 6.3: Adding token to TOKEN_PRICES Table
 
-```
+```lua
 if not TOKEN_PRICES[token] then
     TOKEN_PRICES[token].price = 0
     TOKEN_PRICES[token].coingecko_id = coingecko_id
@@ -137,7 +135,7 @@ end
 
 6.4 Logging for Debugging
 
-```
+```lua
 table.insert(
     LOGS,
     {
@@ -153,7 +151,7 @@ table.insert(
 
 👀 At last your handler will look like this 👇🏻
 
-```
+```lua
 Handlers.add(
     "AddToken",
     Handlers.utils.hasMatchingTag("Action", "Add-Token"),
@@ -230,7 +228,7 @@ Handlers.add(
 
 7.1 Handler Definition
 
-```
+```lua
 Handlers.add(
     "GetPrice",
     Handlers.utils.hasMatchingTag("Action", "Get-Price"),
@@ -239,7 +237,7 @@ Handlers.add(
 
 7.2 Extracting Token and Price
 
-```
+```lua
 local token = msg.Tags.Token
 local price = TOKEN_PRICES[token].price
 ```
@@ -277,7 +275,7 @@ ao.send({
 
 7.5 Logging for Debugging
 
-```
+```lua
 table.insert(
     LOGS,
     {
@@ -293,7 +291,7 @@ table.insert(
 
 👀 At last your handler will look like this 👇🏻
 
-```
+```lua
 Handlers.add(
     "GetPrice",
     Handlers.utils.hasMatchingTag("Action", "Get-Price"),
@@ -342,7 +340,7 @@ Handlers.add(
 
 8.1 CRON Function for Token Price Update
 
-```
+```lua
 Handlers.add(
     "CronTick",
     Handlers.utils.hasMatchingTag("Action", "Cron"),
@@ -367,7 +365,7 @@ Handlers.add(
 
 8.2: Handling Received Data for Token Price Update
 
-```
+```lua
 Handlers.add(
     "ReceivingData",
     Handlers.utils.hasMatchingTag("Action", "Receive-data-feed"),
@@ -399,13 +397,13 @@ Now you can check the inbox of your `ao` process to see the response from the **
 > *Voila! You have successfully completed your first Quest to the **0rbit**. 🎉🎉*
 > 
 
-**Submission:**
+## Submission:
 
 ```lua
 Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim", Quest = "Price-Bot", User = <username>})
 ```
 
-**Points:**
+## Points:
 
 > Note: It will take a little time after we recieve your request. Once you get the message for Credit-Notice run following to check balance.
 > 
