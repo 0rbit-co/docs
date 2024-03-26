@@ -7,11 +7,14 @@
   "fetch-http-data": "Fetch HTTP Data",
   "post-http-data": "Post HTTP Data",
   "examples": "Examples",
+  "Quests": {
+    "type": "separator"
+  },
+  "quests" : "Quests",
   "Architecture": {
     "type": "separator"
   },
   "architecture": "Architecture",
-  "quests" : "Quests",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
