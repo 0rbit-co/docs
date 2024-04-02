@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/0rbit-co/docs#readme",
   "dependencies": {
+    "@next/third-parties": "^14.1.4",
     "@vercel/analytics": "^1.2.2",
-    "next": "^13.0.6",
+    "next": "^14.1.4",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "react": "^18.2.0",
