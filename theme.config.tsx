@@ -3,6 +3,9 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import { tree } from "next/dist/build/templates/app-page";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+const googleAnalyticsMeasurementId: string = process.env.GOOGLE_ANALYTICS;
 
 const headProp = () => {
   const { asPath, defaultLocale, locale } = useRouter();
@@ -12,18 +15,6 @@ const headProp = () => {
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
   return (
     <head>
-      <Script
-        strategy="lazyOnload"
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
-      ></Script>
-      <Script id="google-analytics" strategy="lazyOnload">
-        {`  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '${process.env.GOOGLE_ANALYTICS}');`}
-      </Script>
       <title>0rbit Developer Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="0rbit Developer Docs" />
@@ -56,6 +47,7 @@ const config: DocsThemeConfig = {
     <>
       {children}
       <Analytics />
+      <GoogleAnalytics gaId={googleAnalyticsMeasurementId} />
     </>
   ),
   useNextSeoProps() {
