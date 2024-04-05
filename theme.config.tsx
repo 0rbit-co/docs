@@ -5,8 +5,9 @@ import { useRouter } from "next/router";
 import { tree } from "next/dist/build/templates/app-page";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-const googleAnalyticsMeasurementId: string = process.env.GOOGLE_ANALYTICS;
-
+const googleAnalyticsMeasurementId: string =
+  process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+// console.log(googleAnalyticsMeasurementId);
 const headProp = () => {
   const { asPath, defaultLocale, locale } = useRouter();
   const { frontMatter } = useConfig();
