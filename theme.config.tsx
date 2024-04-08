@@ -14,7 +14,7 @@ const headProp = () => {
       <title>0rbit Developer Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="0rbit Developer Docs" />
-      <meta name="description" content="0rbit Developer Docs" />
+      <meta name="description" content="0rbit Developer Docs | Documentation" />
       <meta
         property="og:description"
         content={frontMatter.description || "0rbit Developer Docs"}
@@ -47,12 +47,14 @@ const config: DocsThemeConfig = {
   ),
   useNextSeoProps() {
     return {
-      titleTemplate: "0rbit | %s",
+      titleTemplate: "0rbit Docs | %s",
       defaultTitle: "0rbit Oracle on Arweave Developer Docs",
-      description: "0rbit Oracle on Arweave | Developer Docs",
+      description:
+        "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
       openGraph: {
         title: "0rbit Developer Docs | Oracle on Arweave",
-        description: "0rbit Developer Docs | Oracle on Arweave",
+        description:
+          "0rbit Developer Docs | Oracle on Arweave | Orbit Documentation | Decenralized Oracle Orbit 0rbit",
         images: [
           {
             url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
