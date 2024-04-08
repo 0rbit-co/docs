@@ -1,12 +1,12 @@
-import { Steps } from 'nextra/components'
+import { Steps } from "nextra/components";
 
-# Fetch HTTP Data
+# Fetch HTTP Data Docs
 
-__0rbit__ helps in bringing any data from both off-chain and on-chain world, and to bring better DevX we have built a simple HTTP function within our __main `ao` process__ to fetch data from any HTTP endpoint.
+**0rbit** helps in bringing any data from both off-chain and on-chain world, and to bring better DevX we have built a simple HTTP function within our **main `ao` process** to fetch data from any HTTP endpoint.
 
 ## How it works?
 
-The architecture of receiving the data from any HTTP URL is really simple. 
+The architecture of receiving the data from any HTTP URL is really simple.
 
 When a request is made from the `ao` process to the 0rbit's `ao` process, the following happens:
 
@@ -18,9 +18,11 @@ Your `ao` process sends the request to the 0rbit's `ao` process with the special
 0rbit's `ao` process checks the tags of the request and then publishes the data on the Arweave Network
 
 ### Step 3
+
 0rbit's Decentralized 0rcale Network fetches the request, process the request data and publish the response on the Arweave Network.
 
 ### Step 4
+
 One of the 0rbit Nodes sends the data to the user's `ao` process.
 
 </Steps>
