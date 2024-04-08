@@ -1,8 +1,8 @@
-import { Steps } from 'nextra/components'
+import { Steps } from "nextra/components";
 
-# Post HTTP Data
+# Post HTTP Data Docs
 
-__0rbit__ helps in posting __ANY on-chain (`ao` computer) DATA__ directly to the off-chain world using the POST Requests. To bring better DevX we have built a simple Handler in __0rbit's `ao` process__  with `Post-Real-Data` tag, you can use this tag and post the data.
+**0rbit** helps in posting **ANY on-chain (`ao` computer) DATA** directly to the off-chain world using the POST Requests. To bring better DevX we have built a simple Handler in **0rbit's `ao` process** with `Post-Real-Data` tag, you can use this tag and post the data.
 
 ## How it works?
 
@@ -18,11 +18,15 @@ Your `ao` process sends the request to the 0rbit's `ao` process with the special
 0rbit's `ao` process checks the tags of the request and then publishes the data on the Arweave Network
 
 ### Step 3
-0rbit's Decentralized 0rcale Network fetches the request data from the Arweave Network. 
+
+0rbit's Decentralized 0rcale Network fetches the request data from the Arweave Network.
 
 ### Step 4
+
 To avoid multiple requests send by the nodes, a consensus mechanism is used to select a single node to process the request.
 
 ### Step 5
-The selected node __post the data on the off-chain world using HTTP POST.__
+
+The selected node **post the data on the off-chain world using HTTP POST.**
+
 </Steps>
