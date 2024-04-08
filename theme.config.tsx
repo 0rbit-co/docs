@@ -1,8 +1,13 @@
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { Analytics } from "@vercel/analytics/react";
+import Script from "next/script";
 import { useRouter } from "next/router";
 import { tree } from "next/dist/build/templates/app-page";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
+const googleAnalyticsMeasurementId: string =
+  process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+// console.log(googleAnalyticsMeasurementId);
 const headProp = () => {
   const { asPath, defaultLocale, locale } = useRouter();
   const { frontMatter } = useConfig();
@@ -43,6 +48,7 @@ const config: DocsThemeConfig = {
     <>
       {children}
       <Analytics />
+      <GoogleAnalytics gaId={googleAnalyticsMeasurementId} />
     </>
   ),
   useNextSeoProps() {
