@@ -93,7 +93,7 @@ const config: DocsThemeConfig = {
   head: headProp,
   faviconGlyph: "💫",
   chat: {
-    link: "https://discord.gg/mQg3kqgXDk",
+    link: "https://discord.gg/JVSjqaKJgV",
   },
   docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
   footer: {
