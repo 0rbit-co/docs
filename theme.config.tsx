@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useRouter } from "next/router";
 import { tree } from "next/dist/build/templates/app-page";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import ClientOnly from "./pages/components/ClientOnly";
 
 const googleAnalyticsMeasurementId: string =
   process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
@@ -46,7 +47,7 @@ const config: DocsThemeConfig = {
   },
   main: ({ children }) => (
     <>
-      {children}
+      <ClientOnly>{children}</ClientOnly>
       <Analytics />
       <GoogleAnalytics gaId={googleAnalyticsMeasurementId} />
     </>
