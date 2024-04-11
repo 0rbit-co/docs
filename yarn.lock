@@ -53,10 +53,60 @@
     "@types/mdx" "^2.0.0"
     "@types/react" ">=16"
 
+"@napi-rs/simple-git-android-arm-eabi@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-android-arm-eabi/-/simple-git-android-arm-eabi-0.1.16.tgz#36b752f84a7e75a9dada3d8b307817f0b015a57d"
+  integrity sha512-dbrCL0Pl5KZG7x7tXdtVsA5CO6At5ohDX3myf5xIYn9kN4jDFxsocl8bNt6Vb/hZQoJd8fI+k5VlJt+rFhbdVw==
+
+"@napi-rs/simple-git-android-arm64@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-android-arm64/-/simple-git-android-arm64-0.1.16.tgz#f84d9e2fdae91bb810b55ffc30a42ce5fe020c76"
+  integrity sha512-xYz+TW5J09iK8SuTAKK2D5MMIsBUXVSs8nYp7HcMi8q6FCRO7yJj96YfP9PvKsc/k64hOyqGmL5DhCzY9Cu1FQ==
+
+"@napi-rs/simple-git-darwin-arm64@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-darwin-arm64/-/simple-git-darwin-arm64-0.1.16.tgz#8d995a920146c320bf13b32d1b1654f44beaa16b"
+  integrity sha512-XfgsYqxhUE022MJobeiX563TJqyQyX4FmYCnqrtJwAfivESVeAJiH6bQIum8dDEYMHXCsG7nL8Ok0Dp8k2m42g==
+
 "@napi-rs/simple-git-darwin-x64@0.1.16":
   version "0.1.16"
   resolved "https://registry.npmjs.org/@napi-rs/simple-git-darwin-x64/-/simple-git-darwin-x64-0.1.16.tgz"
   integrity sha512-tkEVBhD6vgRCbeWsaAQqM3bTfpIVGeitamPPRVSbsq8qgzJ5Dx6ZedH27R7KSsA/uao7mZ3dsrNLXbu1Wy5MzA==
+
+"@napi-rs/simple-git-linux-arm-gnueabihf@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-linux-arm-gnueabihf/-/simple-git-linux-arm-gnueabihf-0.1.16.tgz#d5135543d372e0571d7c19928e75751eb407d7dd"
+  integrity sha512-R6VAyNnp/yRaT7DV1Ao3r67SqTWDa+fNq2LrNy0Z8gXk2wB9ZKlrxFtLPE1WSpWknWtyRDLpRlsorh7Evk7+7w==
+
+"@napi-rs/simple-git-linux-arm64-gnu@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-linux-arm64-gnu/-/simple-git-linux-arm64-gnu-0.1.16.tgz#4e293005b2fd62d1eb399b50e53d983378c19fb7"
+  integrity sha512-LAGI0opFKw/HBMCV2qIBK3uWSEW9h4xd2ireZKLJy8DBPymX6NrWIamuxYNyCuACnFdPRxR4LaRFy4J5ZwuMdw==
+
+"@napi-rs/simple-git-linux-arm64-musl@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-linux-arm64-musl/-/simple-git-linux-arm64-musl-0.1.16.tgz#679edd2c6d88de6aa35993401722ade04595869b"
+  integrity sha512-I57Ph0F0Yn2KW93ep+V1EzKhACqX0x49vvSiapqIsdDA2PifdEWLc1LJarBolmK7NKoPqKmf6lAKKO9lhiZzkg==
+
+"@napi-rs/simple-git-linux-x64-gnu@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-linux-x64-gnu/-/simple-git-linux-x64-gnu-0.1.16.tgz#b33054b14a88335f19261b812f65f8d567e7d199"
+  integrity sha512-AZYYFY2V7hlcQASPEOWyOa3e1skzTct9QPzz0LiDM3f/hCFY/wBaU2M6NC5iG3d2Kr38heuyFS/+JqxLm5WaKA==
+
+"@napi-rs/simple-git-linux-x64-musl@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-linux-x64-musl/-/simple-git-linux-x64-musl-0.1.16.tgz#8cfc8f5f35951dacae86e72b5535ea401f868b7a"
+  integrity sha512-9TyMcYSBJwjT8jwjY9m24BZbu7ozyWTjsmYBYNtK3B0Um1Ov6jthSNneLVvouQ6x+k3Ow+00TiFh6bvmT00r8g==
+
+"@napi-rs/simple-git-win32-arm64-msvc@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-win32-arm64-msvc/-/simple-git-win32-arm64-msvc-0.1.16.tgz#e6b220574421695f4c05be4e065b1fd46ffb7007"
+  integrity sha512-uslJ1WuAHCYJWui6xjsyT47SjX6KOHDtClmNO8hqKz1pmDSNY7AjyUY8HxvD1lK9bDnWwc4JYhikS9cxCqHybw==
+
+"@napi-rs/simple-git-win32-x64-msvc@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@napi-rs/simple-git-win32-x64-msvc/-/simple-git-win32-x64-msvc-0.1.16.tgz#4ec44d57fc2c069544ffb923a2871d81d5db7cfc"
+  integrity sha512-SoEaVeCZCDF1MP+M9bMSXsZWgEjk4On9GWADO5JOulvzR1bKjk0s9PMHwe/YztR9F0sJzrCxwtvBZowhSJsQPg==
 
 "@napi-rs/simple-git@^0.1.9":
   version "0.1.16"
@@ -316,7 +366,7 @@ acorn-jsx@^5.0.0:
   resolved "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"
   integrity sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==
 
-"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", acorn@^8.0.0:
+acorn@^8.0.0:
   version "8.11.3"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.11.3.tgz"
   integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
@@ -411,7 +461,7 @@ character-reference-invalid@^2.0.0:
   resolved "https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz"
   integrity sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==
 
-client-only@^0.0.1, client-only@0.0.1:
+client-only@0.0.1, client-only@^0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz"
   integrity sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==
@@ -456,11 +506,6 @@ commander@^8.3.0:
   resolved "https://registry.npmjs.org/commander/-/commander-8.3.0.tgz"
   integrity sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==
 
-commander@7:
-  version "7.2.0"
-  resolved "https://registry.npmjs.org/commander/-/commander-7.2.0.tgz"
-  integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
-
 compute-scroll-into-view@^3.0.2:
   version "3.1.0"
   resolved "https://registry.npmjs.org/compute-scroll-into-view/-/compute-scroll-into-view-3.1.0.tgz"
@@ -494,20 +539,13 @@ cytoscape-cose-bilkent@^4.1.0:
   dependencies:
     cose-base "^1.0.0"
 
-cytoscape@^3.2.0, cytoscape@^3.28.1:
+cytoscape@^3.28.1:
   version "3.28.1"
   resolved "https://registry.npmjs.org/cytoscape/-/cytoscape-3.28.1.tgz"
   integrity sha512-xyItz4O/4zp9/239wCcH8ZcFuuZooEeF8KHRmzjDfGdXsj3OG9MFSMA0pJE0uX3uCN/ygof6hHf4L7lst+JaDg==
   dependencies:
     heap "^0.2.6"
     lodash "^4.17.21"
-
-d3-array@^3.2.0, "d3-array@2 - 3", "d3-array@2.10.0 - 3", "d3-array@2.5.0 - 3", d3-array@3:
-  version "3.2.4"
-  resolved "https://registry.npmjs.org/d3-array/-/d3-array-3.2.4.tgz"
-  integrity sha512-tdQAmyA18i4J7wprpYq8ClcxZy3SC31QMeByyCFyRt7BVHdREQZ5lpzoe5mFEYZUWe+oq8HBvk9JjpibyEV4Jg==
-  dependencies:
-    internmap "1 - 2"
 
 "d3-array@1 - 2":
   version "2.12.1"
@@ -632,11 +670,6 @@ d3-hierarchy@3:
   dependencies:
     d3-color "1 - 3"
 
-d3-path@^3.1.0, "d3-path@1 - 3", d3-path@3:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/d3-path/-/d3-path-3.1.0.tgz"
-  integrity sha512-p3KP5HCf/bvjBSSKuXid6Zqijx7wIfNW+J/maPs+iwR35at5JCbLUT0LzF1cnjbCHWhqzQTIN2Jpe8pRebIEFQ==
-
 d3-path@1:
   version "1.0.9"
   resolved "https://registry.npmjs.org/d3-path/-/d3-path-1.0.9.tgz"
@@ -707,13 +740,6 @@ d3-shape@^1.2.0:
   integrity sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==
   dependencies:
     d3-path "1"
-
-d3-shape@3:
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/d3-shape/-/d3-shape-3.2.0.tgz"
-  integrity sha512-SaLBuwGm3MOViRq2ABk3eLoxwZELpH6zhl3FbAoJ7Vm1gofKx6El1Ib5z23NUEhF9AsGl7y+dzLe5Cw2AArGTA==
-  dependencies:
-    d3-path "^3.1.0"
 
 "d3-time-format@2 - 4", d3-time-format@4:
   version "4.1.0"
@@ -1183,11 +1209,6 @@ internmap@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/internmap/-/internmap-1.0.1.tgz"
   integrity sha512-lDB5YccMydFBtasVtxnZ3MRBHuaoE8GKsppq+EchKL2U4nK/DmEpPHNH8MZe5HkMtpSiTSOZwfN0tzYjO/lJEw==
-
-"internmap@1 - 2":
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/internmap/-/internmap-2.0.3.tgz"
-  integrity sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==
 
 intersection-observer@^0.12.2:
   version "0.12.2"
@@ -2099,7 +2120,7 @@ nextra-theme-docs@^2.13.4:
     scroll-into-view-if-needed "^3.1.0"
     zod "^3.22.3"
 
-nextra@^2.13.4, nextra@2.13.4:
+nextra@^2.13.4:
   version "2.13.4"
   resolved "https://registry.npmjs.org/nextra/-/nextra-2.13.4.tgz"
   integrity sha512-7of2rSBxuUa3+lbMmZwG9cqgftcoNOVQLTT6Rxf3EhBR9t1EI7b43dted8YoqSNaigdE3j1CoyNkX8N/ZzlEpw==
@@ -2243,7 +2264,7 @@ pseudomap@^1.0.2:
   resolved "https://registry.npmjs.org/pseudomap/-/pseudomap-1.0.2.tgz"
   integrity sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==
 
-react-dom@*, "react-dom@^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", react-dom@^18.2.0, react-dom@>=16.0.0, react-dom@>=16.13.1, "react-dom@>=16.x <=18.x":
+react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -2251,7 +2272,7 @@ react-dom@*, "react-dom@^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react@*, "react@^16 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18 || ^19", react@^18.2.0, "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.0.0, react@>=16.13.1, "react@>=16.x <=18.x":
+react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -2422,7 +2443,7 @@ shebang-regex@^1.0.0:
   resolved "https://registry.npmjs.org/shebang-regex/-/shebang-regex-1.0.0.tgz"
   integrity sha512-wpoSFAxys6b2a2wHZ1XpDSgD7N9iVjg29Ph9uV/uaP9Ex/KXlkTZTeddxDPSYQpgvzKLGJke2UU0AzoGCjNIvQ==
 
-shiki@*, shiki@^0.14.3:
+shiki@^0.14.3:
   version "0.14.7"
   resolved "https://registry.npmjs.org/shiki/-/shiki-0.14.7.tgz"
   integrity sha512-dNPAPrxSc87ua2sKJ3H5dQ/6ZaY8RNnaAqK+t0eG7p0Soi2ydiqbGOTaZCqaYvA/uZYfS1LJnemt3Q+mSfcPCg==
@@ -2681,7 +2702,7 @@ unist-util-visit-parents@^4.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
 
-unist-util-visit-parents@^5.0.0:
+unist-util-visit-parents@^5.0.0, unist-util-visit-parents@^5.1.1:
   version "5.1.3"
   resolved "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-5.1.3.tgz"
   integrity sha512-x6+y8g7wWMyQhL1iZfhIPhDAs7Xwbn9nRosDXl7qoPTSCy0yNxnKc+hWokFifWQIDGi154rdUqKvbCa4+1kLhg==
