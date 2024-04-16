@@ -1,0 +1,243 @@
+# News Feed
+import { Callout } from 'nextra/components'
+
+Your mission is to create a Cron-bot that will post the latest news every 4 hours using **0rbit's** `ao` process
+
+## Pre-Requisites
+
+- Basic understanding of aos
+
+## **Checkpoint 1: 📝 Start the editor**
+
+```lua
+aos> .editor
+```
+
+This will start the editor for you to write the commands to interact with the `ao` processes.
+
+## **Checkpoint 2: 🛠 JSON Module**
+
+To begin, we need to import the JSON module into our **aos** process. 
+
+```lua
+local json = require("json")
+```
+
+The JSON module is required in your script to handle JSON data. In the provided codebase, you are interacting with an API to fetch latest news. The data returned by this API is typically in JSON format. Therefore, you need to parse this JSON data to extract the required information. We will look into how to do this in a later step.
+
+For more detailed information on how to use the JSON module, you can visit the documentation at: [JSON Module Documentation](https://cookbook_ao.arweave.dev/guides/aos/modules/json.html)
+
+> Congratulations! You've just written your first line for the quest! 🎉
+> 
+
+## **Checkpoint 3: 🧭 Constants**
+
+```lua
+_0RBIT = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
+```
+
+This constant represents the process ID of the 0rbit process. It is a unique identifier used for communication or interaction with the 0rbit’s ao process.
+
+```lua
+BASE_URL = "https://api.thenewsapi.com/v1/news/top?api_token=gkk5rRtEDzHaQnKJSLDyzOEl3uhxaXqGbZnCh0H0&locale=us&limit=3"
+```
+
+This constant holds the base URL for the News-Feed API.
+
+> Remember, every small step counts towards progress! 🚀
+> 
+
+## **Checkpoint 4:🖖🏻 Initializing `NEWS` and `RECEIVE` Array**
+
+```lua
+LOGS = LOGS or {}
+
+RECEIVE = RECEIVE or {}
+```
+RECEIVE = RECEIVE or {} initializes a table to store news data fetched from the API.
+
+LOGS = LOGS or {} initializes a table to store log information for debugging purposes.
+
+> Keep up the momentum, you're doing great! 🚀
+> 
+
+## **Checkpoint 5: 📰 Adding Get-News Handler**
+
+Define a handler for fetching the news.
+
+<br />
+<i>**5.1: Handler Definition**</i>
+
+```lua
+Handlers.add(
+    "GetNews",
+    Handlers.utils.hasMatchingTag("Action", "Get-News"),
+```
+
+<i>**5.2: Returning the `RECEIVE` Variable**</i>
+
+```lua
+    function(msg)
+        ao.send({
+            Target = ao.id,
+            Action = "Receive-data-feed",
+        })
+        Handlers.utils.reply(json.encode(RECEIVE))(msg)
+    end
+)
+```
+
+👀 At last your handler will look like this 👇🏻
+
+```lua
+Handlers.add(
+    "Get-News",
+    Handlers.utils.hasMatchingTag("Action", "Get-News"),
+    function(msg)
+        ao.send({
+            Target = ao.id,
+            Action = "Receive-data-feed",
+        })
+        Handlers.utils.reply(json.encode(RECEIVE))(msg)
+    end
+)
+```
+
+> You just created your first handler for the NEWS_FEED! 🎉
+> 
+ 
+
+## **Checkpoint 6: 🔥 Adding Receive-News Handler**
+<br />
+<i>**6.1 Handler Definition**</i>
+
+```lua
+Handlers.add(
+    "ReceiveData",
+    Handlers.utils.hasMatchingTag("Action", "Receive-Data-Feed"),
+    function(msg)
+```
+
+<i>**6.2: Processing Incoming Data**</i>
+
+```lua
+        local res = json.decode(msg.Data)
+
+        local data = res["data"]
+
+        RECEIVE = {}
+
+        for i, article in ipairs(data) do
+            local received_article = {
+                title = article["title"],
+                description = article["description"],
+                url = article["url"]
+            }
+            table.insert(RECEIVE, received_article)
+        end
+        print(RECEIVE)
+    end
+)
+```
+
+👀 At last your handler will look like this 👇🏻
+
+```lua
+Handlers.add(
+    "ReceivingData",
+    Handlers.utils.hasMatchingTag("Action", "Receive-data-feed"),
+    function(msg)
+        local res = json.decode(msg.Data)
+
+        local data = res["data"]
+
+        RECEIVE = {}
+
+        for i, article in ipairs(data) do
+            local received_article = {
+                title = article["title"],
+                description = article["description"],
+                url = article["url"]
+            }
+            table.insert(RECEIVE, received_article)
+        end
+        print(RECEIVE)
+    end
+)
+```
+> Keep going, your next Handler awaits! ⏰
+> 
+
+## **Checkpoint 7: ⏰ Adding Cron Handler**
+<br />
+```lua
+Handlers.add(
+    "CronTick",
+    Handlers.utils.hasMatchingTag("Action", "Cron"),
+    function()
+        ao.send({
+            Target = _0RBIT,
+            Action = "Get-Real-Data",
+            Url = BASE_URL
+        })
+    end
+)
+```
+
+> Congratulations on making it this far! 🥳 You're already part of our family. Don't forget to join us on <a href="https://discord.gg/x6QjBuZFZr" style={{ color: 'white', textDecoration: 'underline' }}>Discord</a> for more discussions and updates. We're excited to have you with us on this journey! 💫
+> 
+
+## **Checkpoint 8: 🔒 Close the editor**
+
+```lua
+aos> .done
+```
+
+This will end your editor session, compile the commands and execute it.
+
+In case you've written your code in a code editor, it's time to load it into the aos process and test your bot:
+
+```lua
+aos> .load news-feed-bot.lua
+```
+
+## **Checkpoint 9: ✅ Getting the Response**
+
+Run the below command to fetch latest news:
+
+```lua
+aos> Send({ Target = ao.id, Action = "Get-News" })
+```
+
+> *Voila! You have successfully completed your Second Quest using **0rbit**. 🎉🎉*
+> 
+
+## **Checkpoint 10: 🕺🏻Check the Inbox**
+
+Now you can check the inbox of your ao process to see the response from the 0rbit.
+
+```lua
+aos> Inbox[#Inbox].Data;
+```
+
+## Submission
+
+This is a two step process:
+
+1. Create a PR <a href="https://github.com/0rbit-co/quest/pulls" style={{color: "orange", textDecoration: "underline"}}>here</a>
+
+- **title**: `${your_username}-news-feed` 
+- **description**: Add the process ID of your News Feed Process and your wallet address. 
+
+2. Send `CLAIM` request
+    ```lua
+    aos> Send({Target= "O3SXXYqQCNTbBedJjsW6wkPnrKFZq8DPLkKjO7zhztE", Action = "Claim", Quest = "News-Bot", User = <username>})
+    ```
+
+<Callout emoji="👾">
+  **300 $0RBT** will be awarded to your Wallet Address after the successful evaluation.
+</Callout>
+
+---
+
+If you have any queries, let us know in the *[Discord channel](https://discord.gg/JVSjqaKJgV) 🫡*
