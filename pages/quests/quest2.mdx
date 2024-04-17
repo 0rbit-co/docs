@@ -68,6 +68,10 @@ Define a handler for fetching the news.
 <br />
 <i>**5.1: Handler Definition**</i>
 
+The `Handlers.add` function adds a new handler or updates an existing handler by name. <br />
+Next up is Handlers.utils library which provides two functions that are common matching patterns and one function that is a common handle function.
+The `Handlers.utils.hasMatchingTag` returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function.
+
 ```lua
 Handlers.add(
     "GetNews",
@@ -75,6 +79,9 @@ Handlers.add(
 ```
 
 <i>**5.2: Returning the `RECEIVE` Variable**</i>
+
+We utilize ao.send to dispatch a message to a designated process and once we receive the response, we use `Handlers.utils.reply` that basically places the text value in to the Data property of the outbound message. <br />
+`json.encode()` is a function returns a string representation of a Lua object in JSON.
 
 ```lua
     function(msg)
@@ -111,6 +118,8 @@ Handlers.add(
 <br />
 <i>**6.1 Handler Definition**</i>
 
+Every Handler Definition follows the same format, as explained in step 5.1. To learn more about how handlers function in ao, you can find additional information <a href="https://cookbook_ao.arweave.dev/references/handlers.html" style={{color: "orange", textDecoration: "underline"}}>here</a>.
+
 ```lua
 Handlers.add(
     "ReceiveData",
@@ -119,6 +128,8 @@ Handlers.add(
 ```
 
 <i>**6.2: Processing Incoming Data**</i>
+
+This code segment first decodes incoming JSON data into a Lua table called `res`, then extracts a specific portion labeled "data" and assigns it to a variable named `data`. It initializes an empty table named `RECEIVE` to hold processed information. Through a loop, it iterates over each article in the data table, extracting details like title, description, and URL, and storing them in a new table called `received_article`. Each received_article is then inserted into the RECEIVE table. Finally, the content of the RECEIVE table is printed, displaying the processed article data.
 
 ```lua
         local res = json.decode(msg.Data)
@@ -170,6 +181,9 @@ Handlers.add(
 
 ## **Checkpoint 7: ⏰ Adding Cron Handler**
 <br />
+`ao` has the ability to generate messages on a specified interval, this interval could be seconds, minutes, hours, or blocks. <br />
+Every cron message has an Action tag with the value Cron. Handlers can be defined to perform specific tasks autonomously, each time a cron message is received.
+
 ```lua
 Handlers.add(
     "CronTick",
