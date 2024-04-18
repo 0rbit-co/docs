@@ -94,7 +94,12 @@ LOGS = LOGS or {}
 Define a handler for adding tokens to the price feed.
 
 <br />
+
 <i>**6.1: Handler Definition**</i>
+<br />
+The `Handlers.add` function adds a new handler or updates an existing handler by name. <br />
+Next up is `Handlers.utils` library which provides two functions that are common matching patterns and one function that is a common handle function.
+The `Handlers.utils.hasMatchingTag` is a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the `Tag Name` and `Value`, if they are equal then it invokes the handle function.
 
 ```lua
 Handlers.add(
@@ -105,13 +110,17 @@ Handlers.add(
 
 <i>**6.2: Checking Process Owner and Extracting Token Information**</i>
 
+In this snippet, `msg.From` and `msg.Tags` are utilized to access a particular attribute within the structured message. For further reference on the specific structure of the message, visit <a href="https://cookbook_ao.arweave.dev/concepts/messages.html" style={{color: "orange", textDecoration: "underline"}}>here</a>.
+
 ```lua
 if msg.From == ao.id then
 	local token = msg.Tags.Token
-  local coingecko_id = msg.Tags.CoingeckoId
+    local coingecko_id = msg.Tags.CoingeckoId
 ```
 
-<i>**6.3: Adding token to TOKEN_PRICES Table**</i>
+<i>**6.3: Adding token to `TOKEN_PRICES` Table**</i>
+
+The following code checks if the token exists in the `TOKEN_PRICES` table. If not, it initializes its price to 0 and sets its `coingecko_id`. Then, it sends a success message to `msg.From` with relevant tags. Otherwise, it sends an error message indicating that the token already exists.
 
 ```lua
 if not TOKEN_PRICES[token] then
@@ -232,6 +241,8 @@ Handlers.add(
 <br />
 <i>**7.1 Handler Definition**</i>
 
+Every Handler Definition follows the same format, as explained in step 6.1. To learn more about how handlers function in ao, you can find additional information <a href="https://cookbook_ao.arweave.dev/references/handlers.html" style={{color: "orange", textDecoration: "underline"}}>here</a>.
+
 ```lua
 Handlers.add(
     "GetPrice",
@@ -248,6 +259,8 @@ local price = TOKEN_PRICES[token].price
 
 <i>**7.3 Checking Price Availability**</i>
 
+It checks if the `price` of a token is equal to 0. If so, it sends an error message. If the `price` is not zero, the execution continues.
+
 ```lua
 if price == 0 then
     ao.send({
@@ -260,10 +273,11 @@ if price == 0 then
     })
     return
 else
-
 ```
 
 <i>**7.4 Sending Price to the Sender**</i>
+
+Here, `ao.send` sends a message to the Sender's Process ID.
 
 ```lua
 ao.send({
@@ -342,7 +356,9 @@ Handlers.add(
 
 ## **Checkpoint 8: 🔥Token Price Update**
 <br />
-<i>**8.1 CRON Function for Token Price Update**</i>
+<i>**8.1 CRON Function for Token Price Update**</i> <br />
+`ao` has the ability to generate messages on a specified interval, this interval could be seconds, minutes, hours, or blocks. <br />
+Every cron message has an Action tag with the value Cron. Handlers can be defined to perform specific tasks autonomously, each time a cron message is received.
 
 ```lua
 Handlers.add(
