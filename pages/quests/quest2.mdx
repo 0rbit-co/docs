@@ -225,10 +225,15 @@ aos> Send({ Target = ao.id, Action = "Get-News" })
 
 To run the Cron-Handler:
 ```
-aos <process_name> --cron 2-seconds
+aos <process_name> --cron 4-hours
 ```
 ```lua
 aos> .monitor
+```
+
+Now to stop the Cron, you can use:
+```lua
+aos> .unmonitor
 ```
 
 > *Voila! You have successfully completed your Second Quest using **0rbit**. 🎉🎉*

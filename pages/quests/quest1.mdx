@@ -120,7 +120,7 @@ if msg.From == ao.id then
 
 <i>**6.3: Adding token to `TOKEN_PRICES` Table**</i>
 
-The following code checks if the token exists in the `TOKEN_PRICES` table. If not, it initializes its price to 0 and sets its coingecko_id. Then, it sends a success message to `msg.From` with relevant tags. Otherwise, it sends an error message indicating that the token already exists.
+The following code checks if the token exists in the `TOKEN_PRICES` table. If not, it initializes its price to 0 and sets its `coingecko_id`. Then, it sends a success message to `msg.From` with relevant tags. Otherwise, it sends an error message indicating that the token already exists.
 
 ```lua
 if not TOKEN_PRICES[token] then
