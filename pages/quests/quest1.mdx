@@ -98,8 +98,8 @@ Define a handler for adding tokens to the price feed.
 <i>**6.1: Handler Definition**</i>
 <br />
 The `Handlers.add` function adds a new handler or updates an existing handler by name. <br />
-Next up is Handlers.utils library which provides two functions that are common matching patterns and one function that is a common handle function.
-The `Handlers.utils.hasMatchingTag` returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function.
+Next up is `Handlers.utils` library which provides two functions that are common matching patterns and one function that is a common handle function.
+The `Handlers.utils.hasMatchingTag` is a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the `Tag Name` and `Value`, if they are equal then it invokes the handle function.
 
 ```lua
 Handlers.add(
@@ -110,7 +110,7 @@ Handlers.add(
 
 <i>**6.2: Checking Process Owner and Extracting Token Information**</i>
 
-In this snippet, msg.From and msg.Tags are utilized to access a particular attribute within the structured message. For further reference on the specific structure of the message, visit <a href="https://cookbook_ao.arweave.dev/concepts/messages.html" style={{color: "orange", textDecoration: "underline"}}>here</a>.
+In this snippet, `msg.From` and `msg.Tags` are utilized to access a particular attribute within the structured message. For further reference on the specific structure of the message, visit <a href="https://cookbook_ao.arweave.dev/concepts/messages.html" style={{color: "orange", textDecoration: "underline"}}>here</a>.
 
 ```lua
 if msg.From == ao.id then
@@ -118,9 +118,9 @@ if msg.From == ao.id then
     local coingecko_id = msg.Tags.CoingeckoId
 ```
 
-<i>**6.3: Adding token to TOKEN_PRICES Table**</i>
+<i>**6.3: Adding token to `TOKEN_PRICES` Table**</i>
 
-These lines of code first check if a token exists in the TOKEN_PRICES table. If not, it initializes its price to 0 and sets its coingecko_id. Then, it sends a success message to msg.From with relevant tags. Otherwise, it sends an error message indicating that the token already exists.
+The following code checks if the token exists in the `TOKEN_PRICES` table. If not, it initializes its price to 0 and sets its coingecko_id. Then, it sends a success message to `msg.From` with relevant tags. Otherwise, it sends an error message indicating that the token already exists.
 
 ```lua
 if not TOKEN_PRICES[token] then
