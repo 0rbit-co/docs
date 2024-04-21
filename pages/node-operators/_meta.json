@@ -1,14 +1,6 @@
 {
     "index": "Introduction",
     "fee-structure": "Fee Structure",
-    "setup-node": {
-        "title": "Setup Node",
-        "prequisites": "Prerequisites",
-        "installation": "Installation"
-    },
-    "setup-0rbit-process": {
-        "title": "Setup 0rbit Process",
-        "prequisites": "Prerequisites",
-        "installation": "Installation"
-    }
+    "setup-node": "Setup Node",
+    "setup-0rbit-process": "Setup 0rbit Process"
 }

@@ -107,7 +107,6 @@ const config: DocsThemeConfig = {
     labels: "feedback",
   },
   navigation: true,
-  gitTimestamp: true,
   footer: {
     text: (
       <span>
