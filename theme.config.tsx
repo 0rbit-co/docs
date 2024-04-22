@@ -41,6 +41,7 @@ const headProp = () => {
 };
 
 const config: DocsThemeConfig = {
+  primaryHue: 37,
   project: {
     link: "https://github.com/0rbit-co",
   },
