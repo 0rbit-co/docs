@@ -13,17 +13,17 @@ In this tutorial, we will learn how to make a GET request on `0rbit` process.
 
 If you are ready with the above prerequisites, 
 
-## 🛠️ Let's start Building 
+## 🛠️ Let's Start Building 
 
-### Intitialize the Project
+### Initialize the Project
 
 Create a new file named `0rbit-Get-Request.lua` in your project directory.
 
 ```bash
-touch 0rbit-get-request.lua
+touch 0rbit-Get-Request.lua
 ```
 
-### Intialize the Variables
+### Initialize the Variables
 
 ```lua
 local json = require("json")
@@ -68,7 +68,7 @@ Breakdown of the above code:
     | __Tag__        | __Description__ |
     | :------------ | :---------: |
     | Target        |    The processId of the recipient. In this case, it's the $0RBT token processId.    |
-    | Action     | The tag that defines the handler to be called in the recipient process.     |
+    | Action     | The tag that defines the handler to be called in the recipient process. In this case it's `Transfer`   |
     | Recipient |     The tag that accepts the processId to whom the $0RBT will be sent. In this case, it's the 0rbit processId.        |
     | Quantity | The amount of $0RBT to be sent. |
     | ["X-Url"] | The _forwarded-tag_ which contains the URL and the same will be used by the __0rbit process__ to fetch the data. |
@@ -97,7 +97,7 @@ Breakdown of the above code:
     - `json.decode` is used to decode the JSON data received.
     - `ReceivedData = res` stores the received data in the `ReceivedData` variable.
 
-<Callout type="warning" emoji="⚠️">
+<Callout type="info" emoji="ℹ️">
     The 0rbit process always sends the data in the `string` format. 
     
     `json.decode` is used above because we know the receiving data, i.e., stringified JSON.
@@ -136,7 +136,7 @@ Transfer some $0RBT to your processID.
     <summary>
     Upon the successful execution, you will receive the following messages in your terminal
     </summary>
-    ![](../../../public/images/developer/get-request/1.png)
+    ![](../../../public/images/developer/get-request/first-get-request.png)
     </details>
 
 ### Check the Data
@@ -192,3 +192,6 @@ Transfer some $0RBT to your processID.
 ---
 ___Voila! You have successfully made your first GET request on the 0rbit process. 🎉___
 
+> You can find the complete code here:
+> 
+> https://github.com/0rbit-co/examples/blob/main/First-Get-Request.lua
