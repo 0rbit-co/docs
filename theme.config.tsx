@@ -1,14 +1,12 @@
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { Analytics } from "@vercel/analytics/react";
-import Script from "next/script";
 import { useRouter } from "next/router";
-import { tree } from "next/dist/build/templates/app-page";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import ClientOnly from "./pages/components/ClientOnly";
 
 const googleAnalyticsMeasurementId: string =
   process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
-// console.log(googleAnalyticsMeasurementId);
+
 const headProp = () => {
   const { asPath, defaultLocale, locale } = useRouter();
   const { frontMatter } = useConfig();
@@ -17,7 +15,7 @@ const headProp = () => {
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
   return (
     <head>
-      <title>0rbit Developer Docs</title>
+      <title>0rbit Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="0rbit Developer Docs" />
       <meta name="description" content="0rbit Developer Docs | Documentation" />
@@ -42,42 +40,34 @@ const headProp = () => {
 };
 
 const config: DocsThemeConfig = {
-  project: {
-    link: "https://github.com/0rbit-co",
-  },
-  main: ({ children }) => (
-    <>
-      <ClientOnly>{children}</ClientOnly>
-      <Analytics />
-      <GoogleAnalytics gaId={googleAnalyticsMeasurementId} />
-    </>
-  ),
+  docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
   useNextSeoProps() {
-    return {
-      titleTemplate: "0rbit Docs | %s",
-      defaultTitle: "0rbit Oracle on Arweave Developer Docs",
-      description:
-        "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
-      openGraph: {
-        title: "0rbit Developer Docs | Oracle on Arweave",
+    return (
+      {
+        titleTemplate: "0rbit Docs | %s",
+        defaultTitle: "0rbit Oracle on Arweave Developer Docs",
         description:
-          "0rbit Developer Docs | Oracle on Arweave | Orbit Documentation | Decenralized Oracle Orbit 0rbit",
-        images: [
-          {
-            url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
-          },
-        ],
-      },
-      twitter: {
-        handle: "@0rbitco",
-        site: "@site",
-        cardType: "summary_large_image",
-      },
-    };
+          "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
+        openGraph: {
+          title: "0rbit Developer Docs | Oracle on Arweave",
+          description:
+            "0rbit Developer Docs | Oracle on Arweave | Orbit Documentation | Decenralized Oracle Orbit 0rbit",
+          images: [
+            {
+              url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
+            },
+          ],
+        },
+        twitter: {
+          handle: "@0rbitco",
+          site: "@site",
+          cardType: "summary_large_image",
+        },
+      }
+    );
   },
-  editLink: {
-    text: "Edit this page on GitHub",
-  },
+  head: headProp,
+  darkMode: true,
   logo: (
     <>
       <img
@@ -89,14 +79,34 @@ const config: DocsThemeConfig = {
       <span style={{ marginLeft: ".4em", fontWeight: 800 }}>0rbit</span>
     </>
   ),
-  logoLink: "http://www.0rbit.co",
-  navigation: true,
-  head: headProp,
-  faviconGlyph: "💫",
+  logoLink: "http://docs.0rbit.co",
+  project: {
+    link: "https://github.com/0rbit-co",
+  },
   chat: {
     link: "https://discord.gg/JVSjqaKJgV",
   },
-  docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
+  sidebar: {
+    autoCollapse: true,
+  },
+  main: ({ children }) => (
+    <>
+      <ClientOnly>{children}</ClientOnly>
+      <Analytics />
+      <GoogleAnalytics gaId={googleAnalyticsMeasurementId} />
+    </>
+  ),
+  toc: {
+    backToTop: true,
+  },
+  editLink: {
+    text: "Edit this page on GitHub",
+  },
+  feedback: {
+    content: "Is this page helpful?",
+    labels: "feedback",
+  },
+  navigation: true,
   footer: {
     text: (
       <span>
@@ -108,14 +118,7 @@ const config: DocsThemeConfig = {
       </span>
     ),
   },
-  feedback: {
-    content: "Is this page helpful?",
-    labels: "feedback",
-  },
-  darkMode: true,
-  sidebar: {
-    autoCollapse: true,
-  },
+  faviconGlyph: "💫"
 };
 
 export default config;
