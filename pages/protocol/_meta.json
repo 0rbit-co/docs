@@ -4,5 +4,14 @@
     },
     "architecture": {
         "title": "Architecture"
+    },
+    "working": {
+        "title": "How it works"
+    },
+    "token": {
+        "title": "$0RBT"
+    },
+    "staking": {
+        "title": "Staking"
     }
 }
