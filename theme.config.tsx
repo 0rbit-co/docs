@@ -50,8 +50,7 @@ const config: DocsThemeConfig = {
         "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
       openGraph: {
         title: "0rbit Developer Docs | Oracle on Arweave",
-        description:
-          "0rbit Developer Docs | Oracle on Arweave | Orbit Documentation | Decenralized Oracle Orbit 0rbit",
+        description: "0rbit Decenralized Oracle on Arweave | Developer Docs",
         images: [
           {
             url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
