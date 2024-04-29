@@ -2,7 +2,7 @@ import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { Analytics } from "@vercel/analytics/react";
 import { useRouter } from "next/router";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import ClientOnly from "./pages/components/ClientOnly";
+import ClientOnly from "./components/ClientOnly";
 
 const googleAnalyticsMeasurementId: string =
   process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
