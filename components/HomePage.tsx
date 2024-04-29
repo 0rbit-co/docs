@@ -3,19 +3,23 @@ import Card from "./Card";
 
 const HomePage = () => {
   return (
-    <main
-      className={`mainHome flex flex-col items-center justify-start z-20 rounded-md py-3 text-center`}
-    >
-      <div className="flex flex-row gap-3 pt-6 items-center justify-center">
-        {/* <Image src="/images/logo/Or.png" alt="logo" height={45} width={45} /> */}
-        <h1 className="sm:text-[36px] text-[30px] font-[Rale-Regular] leading-[36px] tracking-widest">
-          Build with Limitless Data
-        </h1>
+    <main className={`mainHome w-full lg:w-[600px] xl:w-[800px] lg:py-10`}>
+      <div className="flex flex-col gap-4 justify-center">
+        <div className="sm:text-[36px] text-[30px] font-bold leading-[36px] tracking-wider">
+          Welcome to 0rbit's Documentation
+        </div>
+        <h3 className="bg-[#392515] p-3 border text-md border-orange-400 rounded-lg text-orange-300">
+          <span className="text-lg">💡 </span> This is the official
+          Documentation for the First Ever Oracle on Arweave
+        </h3>
+        <div className="pt-2">
+            Discover the world of 0rbit with our comprehensive suite of
+            resources! Dive into developer insights, learn-by-building guides,
+            explore protocols, grasp core concepts, and join our vibrant
+            community of node operators. 🚀
+          </div>
       </div>
-      <h3 className="sm:text-[18px] text-[15px] font-[Light] tracking-wide">
-        Documentation for first ever Oracle on Arweave
-      </h3>
-      <section className="sm:grid sm:grid-cols-2 sm:gap-6 gap-3 py-9 items-center place-items-center justify-center">
+      <section className="pt-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
         {cards.map((card, key) => {
           return (
             <Card
@@ -37,31 +41,31 @@ export default HomePage;
 const cards = [
   {
     title: "Developer",
-    imag: "developer.png",
+    imag: "developer.svg",
     text: "Understand the capabilities of 0rbit ",
     link: "/developer",
   },
   {
     title: "Learn by Building",
-    imag: "build.png",
+    imag: "build.svg",
     text: "Guides to build different processes with 0rbit",
     link: "/learn-by-building",
   },
   {
     title: "Protocol",
-    imag: "protocol.png",
+    imag: "protocol.svg",
     text: "Learn about 0rbit in deep",
     link: "/protocol",
   },
   {
     title: "Concepts",
-    imag: "concept.png",
+    imag: "concept.svg",
     text: "Understand the basic concepts of ao",
     link: "/concepts/what-is-arweave",
   },
   {
     title: "Node Operators",
-    imag: "node.png",
+    imag: "node.svg",
     text: "Be a part of the 0rbit Network",
     link: "/node-operators",
   },

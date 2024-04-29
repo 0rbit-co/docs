@@ -58,16 +58,6 @@
   src: local("RalewayThin"),
     url("/_font/Raleway/static/Raleway-Thin.ttf") format("truetype");
 }
-.mainHome {
-  /* background-image: radial-gradient(red, green, blue); */
-  /* background-image: conic-gradient(red, yellow, green); */
-  /* background-image: conic-gradient(red, yellow, green); */
-  /* background-image: linear-gradient(red, yellow, blue); */
-  /* background-image: url("../public/images/bg.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 600px; */
-}
 
 * {
   transition: all 0.6s;

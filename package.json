@@ -18,12 +18,16 @@
   "homepage": "https://github.com/0rbit-co/docs#readme",
   "dependencies": {
     "@next/third-parties": "^14.1.4",
+    "@tabler/icons-react": "^3.2.0",
     "@vercel/analytics": "^1.2.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.1.7",
     "next": "^14.1.4",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "20.11.25",
