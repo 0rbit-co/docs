@@ -69,12 +69,12 @@ const config: DocsThemeConfig = {
   logo: (
     <>
       <img
-        src="https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/Orbit%20Icon.svg"
+        src="../images/logo/lightLogo.svg"
         alt="0rbit"
-        width="40"
-        height="40"
+        width="70"
+        height="70"
       />
-      <span style={{ marginLeft: ".4em", fontWeight: 800 }}>0rbit</span>
+      {/* <span style={{ marginLeft: ".4em", fontWeight: 800 }}>0rbit</span> */}
     </>
   ),
   logoLink: "http://docs.0rbit.co",
@@ -116,7 +116,7 @@ const config: DocsThemeConfig = {
       </span>
     ),
   },
-  faviconGlyph: "💫",
+  faviconGlyph: "",
 };
 
 export default config;

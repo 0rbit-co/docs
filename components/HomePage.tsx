@@ -28,7 +28,7 @@ export const HomePage = ({
     mouseY.set(clientY - top);
   }
   return (
-    <div className="lg:p-10 p-2">
+    <div className="lg:p-10 p-2 min-h-[1200px]">
       <div className="flex justify-center items-center">
         <div className="">
           <div className="flex flex-col lg:flex-row justify-between">
