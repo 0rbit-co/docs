@@ -3,7 +3,10 @@
     "type": "page"
   },
   "index": {
-    "display": "hidden"
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
   },
   "concepts": {
     "title": "Concepts",

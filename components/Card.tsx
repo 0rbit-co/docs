@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiMiniArrowLongRight } from "react-icons/hi2";
 
-
 interface CardProps {
   title: string;
   imag: string;
@@ -18,7 +17,7 @@ const Card: React.FC<CardProps> = ({ title, imag, text, link, last }) => {
     <Link href={link} className="">
       <div
         className={cn(
-          "p-6 rounded-lg border border-white/30 w-90 bg-[#151515] text-white/80 h-[200px] flex flex-col gap-4 hover:scale-105 transition-transform duration-300 ease-in-out",
+          "p-6 rounded-lg border border-white/30 w-[400px] bg-[#151515] text-white/80 h-[200px] flex flex-col gap-4 hover:scale-105 hover:bg-black/20 transition-transform duration-300 ease-in-out",
         )}
       >
         <div className="flex justify-between flex-col h-full">
