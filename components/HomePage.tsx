@@ -28,73 +28,86 @@ export const HomePage = ({
     mouseY.set(clientY - top);
   }
   return (
-    <div className="p-14">
-      <div
-        className={cn(
-          "relative h-[200px] rounded-3xl font-bold flex items-center bg-white dark:bg-transparent justify-center w-1/2 group",
-          containerClassName
-        )}
-        onMouseMove={handleMouseMove}
-      >
-        <div className="absolute inset-0 pointer-events-none" />
-        <motion.div
-          className="pointer-events-none rounded-3xl bg-dot-thick-orange-500 dark:bg-sqaure-thick-orange-500 absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
-          style={{
-            WebkitMaskImage: useMotionTemplate`
-            radial-gradient(
-              200px circle at ${mouseX}px ${mouseY}px,
-              black 0%,
-              transparent 100%
-            )
-          `,
-            maskImage: useMotionTemplate`
-            radial-gradient(
-              200px circle at ${mouseX}px ${mouseY}px,
-              black 0%,
-              transparent 100%
-            )
-          `,
-          }}
-        />
-
-        <div className={cn("relative lg:text-[60px]", className)}>
-          {children}
+    <div className="">
+      <div className="flex justify-center items-center">
+        <div className="p-10">
+          <div className="flex justify-between">
+            <div className="w-2/3">
+              <div
+                className={cn(
+                  "relative h-[200px] rounded-3xl font-bold flex items-center bg-white dark:bg-transparent pl-10 group",
+                  containerClassName
+                )}
+                onMouseMove={handleMouseMove}
+              >
+                <div className="absolute inset-0 pointer-events-none" />
+                <motion.div
+                  className="pointer-events-none rounded-3xl bg-dot-thick-orange-500 dark:bg-square-thick-orange-500 absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+                  style={{
+                    WebkitMaskImage: useMotionTemplate`
+                      radial-gradient(
+                        200px circle at ${mouseX}px ${mouseY}px,
+                        black 0%,
+                        transparent 100%
+                      )
+                    `,
+                    maskImage: useMotionTemplate`
+                      radial-gradient(
+                        200px circle at ${mouseX}px ${mouseY}px,
+                        black 0%,
+                        transparent 100%
+                      )
+                    `,
+                  }}
+                />
+                <div className={cn("relative lg:text-[60px]", className)}>
+                  {children}
+                </div>
+              </div>
+              <div className="pl-4">
+                <div className="relative pl-6 pt-10 text-[20px] text-[#e8e9eb] w-full">
+                  Build with Limitless Data on{" "}
+                  <span className="font-semibold">ao</span>. Simple, powerful and
+                  flexible site generation framework with everything you love from
+                  Next.js
+                </div>
+                <div className="flex justify-start pt-8 pl-6 gap-4">
+                  <button className="flex text-center p-2 font-bold rounded-xl bg-orange-400">
+                    Get Started
+                  </button>
+                  <button className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400">
+                    Builders' Kit
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="w-1/3 bg-red-400 flex justify-center items-center">
+              Image
+            </div>
+          </div>
+          <div className="h-[1px] bg-white/30 mt-10"></div>
         </div>
       </div>
-      <div className="pl-9 py-10 text-[20px] text-[#e8e9eb] w-1/2">
-        Build with Limitless Data on <span className="font-semibold">ao</span>.
-        Simple, powerful and flexible site generation framework with everything
-        you love from Next.js
+      <div className="flex justify-center items-center pb-10">
+        <section className="pt-4 justify-center items-center grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {cards.map((card, key) => {
+            return (
+              <Card
+                key={key}
+                title={card.title}
+                imag={card.imag}
+                text={card.text}
+                link={card.link}
+                last={key + 1 === cards.length}
+              />
+            );
+          })}
+        </section>
       </div>
-      <div className="w-1/2 flex justify-start pl-9 gap-4">
-        <button className="flex text-center p-2 font-bold rounded-xl bg-orange-400">
-          Get Started
-        </button>
-        <button className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400">
-          Builders' Kit
-        </button>
-      </div>
-      <div className="h-[1px] bg-white/30 mt-10"></div>
-      <div className="flex justify-center items-center">
-  <section className="pt-10 grid grid-cols-1 lg:grid-cols-3 gap-4 justify-center">
-    {cards.map((card, key) => {
-      return (
-        <Card
-          key={key}
-          title={card.title}
-          imag={card.imag}
-          text={card.text}
-          link={card.link}
-          last={key + 1 === cards.length}
-        />
-      );
-    })}
-  </section>
-</div>
- 
     </div>
   );
 };
+
 
 export const Highlight = ({
   children,
