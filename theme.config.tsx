@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { useRouter } from "next/router";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import ClientOnly from "./components/ClientOnly";
+import Footer from "./components/Footer";
 
 const googleAnalyticsMeasurementId: string =
   process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
@@ -65,7 +66,7 @@ const config: DocsThemeConfig = {
     };
   },
   head: headProp,
-  darkMode: true,
+  darkMode: false,
   logo: (
     <>
       <img
@@ -105,17 +106,7 @@ const config: DocsThemeConfig = {
     labels: "feedback",
   },
   navigation: true,
-  footer: {
-    text: (
-      <span>
-        MIT {new Date().getFullYear()} ©{" "}
-        <a href="https://0rbit.co" target="_blank">
-          0rbit
-        </a>
-        .
-      </span>
-    ),
-  },
+  footer: { component: <Footer /> },
   faviconGlyph: "",
 };
 

@@ -28,14 +28,14 @@ export const HomePage = ({
     mouseY.set(clientY - top);
   }
   return (
-    <div className="lg:p-10 p-2 min-h-[1200px]">
+    <div className="lg:p-10 p-2">
       <div className="flex justify-center items-center">
         <div className="">
           <div className="flex flex-col lg:flex-row justify-between">
             <div className="w-full lg:w-2/3 pb-4">
               <div
                 className={cn(
-                  "relative h-[200px] rounded-3xl font-bold flex items-center bg-white dark:bg-transparent pl-10 group",
+                  "relative h-[170px] rounded-3xl font-bold flex items-center bg-white dark:bg-transparent pl-10 group",
                   containerClassName
                 )}
                 onMouseMove={handleMouseMove}
@@ -89,7 +89,7 @@ export const HomePage = ({
         </div>
       </div>
       <div className="flex justify-center items-center pb-10">
-        <section className="pt-4 justify-center items-center grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <section className="pt-4 justify-center items-center grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4">
           {cards.map((card, key) => {
             return (
               <Card
