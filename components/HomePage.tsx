@@ -3,6 +3,7 @@ import { cn } from "../helpers/utils";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
 import Card from "./Card";
+import Image from "next/image";
 
 export const HomePage = ({
   children,
@@ -32,10 +33,10 @@ export const HomePage = ({
       <div className="flex justify-center items-center">
         <div className="">
           <div className="flex flex-col lg:flex-row justify-between">
-            <div className="w-full lg:w-2/3 pb-4">
+            <div className="w-full lg:w-1/2 pb-4">
               <div
                 className={cn(
-                  "relative h-[170px] rounded-3xl font-bold flex items-center bg-white dark:bg-transparent pl-10 group",
+                  "relative h-[170px] rounded-3xl w-full font-bold flex items-center bg-white dark:bg-transparent pl-10 group",
                   containerClassName
                 )}
                 onMouseMove={handleMouseMove}
@@ -65,7 +66,7 @@ export const HomePage = ({
                 </div>
               </div>
               <div className="pl-4">
-                <div className="relative pl-6 lg:pt-10 lg:text-[20px] text-[17px] text-[#e8e9eb] w-full">
+                <div className="relative pl-6 lg:pt-6 lg:text-[20px] text-[17px] text-[#e8e9eb] w-full">
                   Build with Limitless Data on{" "}
                   <span className="font-semibold">ao</span>. Simple, powerful and
                   flexible site generation framework with everything you love from
@@ -81,8 +82,8 @@ export const HomePage = ({
                 </div>
               </div>
             </div>
-            <div className="w-full h-[100px] lg:h-[400px] lg:w-1/3 border-2 border-orange-400 flex justify-center items-center">
-              Image
+            <div className="w-full lg:w-1/2 flex justify-center items-center pb-4">
+              <Image src="/images/intro-diagram.svg" alt="image" width={1000} height={1000} />
             </div>
           </div>
           <div className="h-[1px] bg-white/30 mt-10"></div>
