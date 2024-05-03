@@ -69,9 +69,7 @@ export const HomePage = ({
               <div className="pl-4">
                 <div className="relative pl-6 lg:pt-6 lg:text-[20px] text-[17px] text-[#e8e9eb] w-full">
                   Build with Limitless Data on{" "}
-                  <span className="font-semibold">ao</span>. Simple, powerful and
-                  flexible site generation framework with everything you love from
-                  Next.js
+                  <span className="font-semibold">ao</span>.
                 </div>
                 <div className="flex justify-start pt-8 pl-6 gap-4">
                   <button className="flex text-center p-2 font-bold rounded-xl bg-orange-400">
