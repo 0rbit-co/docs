@@ -8,12 +8,20 @@ Tokens are the digital assets that make up the blockchain ecosystem. They're cru
 
 By the way, did you know you can get `$0RBT` tokens too by completing the quests? So, why not complete a quest and claim your share? 😉
 
+
+## 🔑 Prerequisites
+
+- Understanding of the [ao](/concepts/what-is-ao) and [aos](/concepts/what-is-aos).
+- `aos` installed on your system.
+- Any Code Editor (VSCode, Sublime Text, etc)
+
 <Callout>
   Before moving into the process of building a token on ao, we suggest taking a
   moment to familiarize yourself with the token specifications. You can either
   have a walkthrough of the specs beforehand or keep them open in another tab
   for easy reference as needed.{" "}
 </Callout>
+
 
 ## 🚀 Building a Token in `ao`
 
@@ -22,13 +30,8 @@ When it comes to building a token, you have two paths to choose from:
 1. **The Blueprint:** Think of this as the quick-start option. The Blueprint provides a pre-designed template that helps you swiftly create a token in ao.
 2. **The Manual Method:** This is for the adventurers—the ones who want to roll up their sleeves and understand every little detail. The Manual Method is a step-by-step guide to building a token in ao from scratch. It’s for those who crave a deep understanding of how tokens work and want to build one right from the ground up.
 
-> In this tutorial, we're opting to use the Blueprint Method as a foundation and understand it line by line.
+> In this tutorial, we're opting to use the [Blueprint](https://cookbook_ao.arweave.dev/guides/aos/blueprints/index.html) as a foundation and understand it line by line.
 
-## 🔑 Prerequisites
-
-- Understanding of the [ao](/concepts/what-is-ao) and [aos](/concepts/what-is-aos).
-- `aos` installed on your system.
-- Any Code Editor (VSCode, Sublime Text, etc)
 
 ## 🛠️ Let's Start Building
 
@@ -122,7 +125,7 @@ The code if Denomination ~= 10 then Denomination = 10 end tells us the number 
 
 Finally, this line checks if the Logo variable is not defined. If it's not, it assigns a placeholder string representing the optional Arweave Transaction ID (TXID) of the token's logo image.
 
-### Understanding the Info Handler
+### Understanding the `Info` Handler
 
 ```lua
 Handlers.add(
@@ -174,7 +177,7 @@ The **`ao.send(msg)`** function is used to send a message to another process. In
 
 In the aos interactive environment, the Send function is available globally for sending messages. When using Send, we specify the recipient process using the Target tag. For instance, if we want to send a message to our own process, identified by ao.id, where the token contract is deployed, we set ao.id as the Target. Adding an Action tag, such as "Info," tells the Messenger Unit (MU) which handler to invoke for processing the message. This approach ensures messages are sent to the right place and actions are taken accordingly within the ao environment.
 
-### Understanding the Balances Handler
+### Understanding the `Balances` Handler
 
 This Handler replies with the entire Balances Table, i.e., it allows processes to retrieve the token balances of all participants. It is a read-only Handler.
 
@@ -213,7 +216,7 @@ Send({ Target = ao.id, Action = "Balances" })
 Inbox[#Inbox].Data
 ```
 
-### Understanding the Balance Handler
+### Understanding the `Balance` Handler
 
 The balance handler allows processes to retrieve the token balance of a participant based on his process ID. It is a read-only Handler.
 
@@ -272,7 +275,7 @@ Here, `<token_process>` refers to the Process ID of the token.
 Inbox[#Inbox].Data
 ```
 
-### Understanding the Transfer Handler
+### Understanding the `Transfer` Handler
 
 The balance handler allows processes to retrieve the token balance of a participant based on his process ID. It is a read-only Handler.
 
@@ -414,7 +417,7 @@ Handlers.add(
 ```
 
 #### Handler Definition
-Handlers.add() registers a new handler named ‘mint’. It will be triggered when a message with the matching tag ‘Action’ and value ‘Mint’ is received.
+Handlers.add() registers a new handler named ‘mint’. It will be triggered when a message with the matching tag `Action` and value `Mint` is received.
 
 #### Understanding the function
 Before starting the minting process, we perform two checks. Firstly, we ensure that the message contains a 'Quantity' tag and confirm that it is of type string. If this condition isn't met, an assertion error is triggered with the message 'Quantity is required!'. Secondly, we validate that the specified quantity is greater than zero using the bint library for arithmetic operations.
@@ -487,9 +490,9 @@ And...
 You can find the complete code here:
 
 > 
-> https://github.com/0rbit-co/examples
+> https://github.com/0rbit-co/examples/blob/main/ao-basics/token.lua
 
 
 ## 🤝 Need Help?
 
-Get help from the team by posting your question in the [0RBIT’s Discord Channel.](https://discord.gg/KWPkD96vdv) 💫
+Join us on [0RBIT’s Discord Channel](https://discord.gg/KWPkD96vdv) for help whenever you need it. We're here to support you every step of the way! 💫
