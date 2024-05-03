@@ -4,6 +4,7 @@ import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
 import Card from "./Card";
 import Image from "next/image";
+import Footer from "./Footer";
 
 export const HomePage = ({
   children,
@@ -29,7 +30,7 @@ export const HomePage = ({
     mouseY.set(clientY - top);
   }
   return (
-    <div className="lg:p-10 p-2">
+    <div className="lg:p-10 lg:pb-0 p-2">
       <div className="flex justify-center items-center">
         <div className="">
           <div className="flex flex-col lg:flex-row justify-between">

@@ -106,7 +106,7 @@ const config: DocsThemeConfig = {
     labels: "feedback",
   },
   navigation: true,
-  footer: { component: <Footer /> },
+  footer: { component: <div className=""><Footer /></div> },
   faviconGlyph: "",
 };
 
