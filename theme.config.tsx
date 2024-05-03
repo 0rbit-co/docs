@@ -2,7 +2,8 @@ import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { Analytics } from "@vercel/analytics/react";
 import { useRouter } from "next/router";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import ClientOnly from "./pages/components/ClientOnly";
+import ClientOnly from "./components/ClientOnly";
+import Footer from "./components/Footer";
 
 const googleAnalyticsMeasurementId: string =
   process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
@@ -40,43 +41,41 @@ const headProp = () => {
 };
 
 const config: DocsThemeConfig = {
+  primaryHue: 37,
   docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
   useNextSeoProps() {
-    return (
-      {
-        titleTemplate: "0rbit Docs | %s",
-        defaultTitle: "0rbit Oracle on Arweave Developer Docs",
-        description:
-          "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
-        openGraph: {
-          title: "0rbit Developer Docs | Oracle on Arweave",
-          description:
-            "0rbit Developer Docs | Oracle on Arweave | Orbit Documentation | Decenralized Oracle Orbit 0rbit",
-          images: [
-            {
-              url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
-            },
-          ],
-        },
-        twitter: {
-          handle: "@0rbitco",
-          site: "@site",
-          cardType: "summary_large_image",
-        },
-      }
-    );
+    return {
+      titleTemplate: "0rbit Docs | %s",
+      defaultTitle: "0rbit Oracle on Arweave Developer Docs",
+      description:
+        "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
+      openGraph: {
+        title: "0rbit Developer Docs | Oracle on Arweave",
+        description: "0rbit Decenralized Oracle on Arweave | Developer Docs",
+        images: [
+          {
+            url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
+          },
+        ],
+      },
+      twitter: {
+        handle: "@0rbitco",
+        site: "@site",
+        cardType: "summary_large_image",
+      },
+    };
   },
   head: headProp,
-  darkMode: true,
+  darkMode: false,
   logo: (
     <>
       <img
-        src="https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/Orbit%20Icon.svg"
+        src="../images/logo/lightLogo.svg"
         alt="0rbit"
-        width="40"
-        height="40"
+        width="70"
+        height="70"
       />
-      <span style={{ marginLeft: ".4em", fontWeight: 800 }}>0rbit</span>
+      {/* <span style={{ marginLeft: ".4em", fontWeight: 800 }}>0rbit</span> */}
     </>
   ),
   logoLink: "http://docs.0rbit.co",
@@ -107,18 +106,8 @@ const config: DocsThemeConfig = {
     labels: "feedback",
   },
   navigation: true,
-  footer: {
-    text: (
-      <span>
-        MIT {new Date().getFullYear()} ©{" "}
-        <a href="https://0rbit.co" target="_blank">
-          0rbit
-        </a>
-        .
-      </span>
-    ),
-  },
-  faviconGlyph: "💫"
+  footer: { component: <div className=""><Footer /></div> },
+  faviconGlyph: "",
 };
 
 export default config;
