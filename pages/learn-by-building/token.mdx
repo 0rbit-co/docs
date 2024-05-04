@@ -1,0 +1,498 @@
+import { Callout } from "nextra/components";
+
+# Building your own Token
+
+## 🟡 What is a Token and Why You Need It?
+
+Tokens are the digital assets that make up the blockchain ecosystem. They're crucial because they serve as digital money, allowing you to buy various items online. And the best part? There isn’t just one type of token—there are thousands! Each type has its own unique purpose, whether it's for purchasing goods, voting, or playing games.
+
+By the way, did you know you can get `$0RBT` tokens too by completing the quests? So, why not complete a quest and claim your share? 😉
+
+
+## 🔑 Prerequisites
+
+- Understanding of the [ao](/concepts/what-is-ao) and [aos](/concepts/what-is-aos).
+- `aos` installed on your system.
+- Any Code Editor (VSCode, Sublime Text, etc)
+
+<Callout>
+  Before moving into the process of building a token on ao, we suggest taking a
+  moment to familiarize yourself with the token specifications. You can either
+  have a walkthrough of the specs beforehand or keep them open in another tab
+  for easy reference as needed.{" "}
+</Callout>
+
+
+## 🚀 Building a Token in `ao`
+
+When it comes to building a token, you have two paths to choose from:
+
+1. **The Blueprint:** Think of this as the quick-start option. The Blueprint provides a pre-designed template that helps you swiftly create a token in ao.
+2. **The Manual Method:** This is for the adventurers—the ones who want to roll up their sleeves and understand every little detail. The Manual Method is a step-by-step guide to building a token in ao from scratch. It’s for those who crave a deep understanding of how tokens work and want to build one right from the ground up.
+
+> In this tutorial, we're opting to use the [Blueprint](https://cookbook_ao.arweave.dev/guides/aos/blueprints/index.html) as a foundation and understand it line by line.
+
+
+## 🛠️ Let's Start Building
+
+### Initialize the Project
+
+Open your preferred text editor — consider using the sumneko.lua extension for enhanced Lua language support — and create a new file. Name it `token.lua`.
+
+```bash
+touch token.lua
+```
+
+### Importing the required modules
+
+```lua
+local bint = require('.bint')(256)
+local ao = require('ao')
+local json = require('json')
+```
+
+Breakdown of the above code:
+
+The first line loads the **`bint`** module, for handling binary integer operations, with an initialization parameter of **`256`**.
+The second line loads the **`ao`** module.
+The third line loads the **`json`** module which is helpful for JSON parsing and manipulation.
+
+<Callout type="info" emoji="ℹ️">
+  For more detailed information on how to use these modules, you can visit the
+  documentation [Module
+  Documentations](https://cookbook_ao.arweave.dev/guides/aos/modules/index.html)
+</Callout>
+
+### Defining the Utils Helper Function
+
+```lua
+local utils = {
+    add = function(a, b)
+        return tostring(bint(a) + bint(b))
+    end,
+    subtract = function(a, b)
+        return tostring(bint(a) - bint(b))
+    end,
+    toBalanceValue = function(a)
+        return tostring(bint(a))
+    end,
+    toNumber = function(a)
+        return tonumber(a)
+    end
+}
+```
+
+Breakdown of the above code:
+
+Here, we’ve defined a Lua table named **`utils`**, which serves as a collection of utility functions. These functions are designed to abstract away the complexity of working directly with binary integers.
+
+- `add` function: This function takes two parameters, **`a`** and **`b`**, representing numbers to be added. Within the function, **`bint(a)`** and **`bint(b)`** convert the input numbers into binary integers. The addition operation is performed on these binary integers, and the result is converted back to a string using **`tostring`**. Finally, the result is returned.
+- **`subtract` function**: Similar to the **`add`** function, this function takes two parameters and performs subtraction instead of addition. It converts the input numbers to binary integers, performs subtraction, converts the result back to a string, and returns it.
+- **`toBalanceValue` function**: This function takes a single parameter **`a`**, representing a number. It converts the input number to a binary integer using **`bint(a)`** and returns the result as a string.
+- **`toNumber` function**: This function takes a single parameter **`a`**, representing a binary integer string. It converts the binary integer string back to a regular number using **`tonumber`** and returns it.
+
+### Initializing the Token State
+
+```lua
+Balances = Balances or { [ao.id] = utils.toBalanceValue(10000 * 1e12) }
+Name = Name or 'Points Coin'
+Ticker = Ticker or 'PNTS'
+Denomination = Denomination or 12
+Logo = Logo or 'SBCCXwwecBlDqRLUjb8dYABExTJXLieawf7m2aBJ-KY'
+```
+
+#### Initializing Balances
+
+This line checks if the variable Balances is not already defined. If it's not defined, it means this is the first time the script is being run, and the Balances table needs to be initialized.
+
+`Balances = { [ao.id] = utils.toBalanceValue(10000 * 1e12) }`: If Balances is not defined, this line initializes it as a table. The table is initialized with a single key-value pair. The key is the ao.id, which presumably represents the ID of the token process. The value associated with this key is 100000000000000, indicating the initial balance of the token process.
+
+#### Setting Name
+
+It is the title of the token, as it should be displayed to users.
+Here, it verifies if the token's name, represented by the variable **`Name`**, is not already set to **`'Points'`**. If it's not, it sets **`Name`** to **`'Points'`**.
+
+#### Setting Ticker
+
+It is a suggested shortened name for the token.
+This line checks if the token's ticker symbol, stored in the variable **`Ticker`**, is not equal to **`'PNTS'`**. If it's not, it assigns **`'PNTS'`** to **`Ticker`**.
+
+#### Setting Denomination
+
+The code if Denomination ~= 10 then Denomination = 10 end tells us the number of the token that should be treated as a single unit. It is not an optional spawning parameter.
+
+#### Setting Logo
+
+Finally, this line checks if the Logo variable is not defined. If it's not, it assigns a placeholder string representing the optional Arweave Transaction ID (TXID) of the token's logo image.
+
+### Understanding the `Info` Handler
+
+```lua
+Handlers.add(
+    'info', 
+    Handlers.utils.hasMatchingTag('Action', 'Info'), 
+    function(msg)
+        ao.send({
+            Target = msg.From,
+            Name = Name,
+            Ticker = Ticker,
+            Logo = Logo,
+            Denomination = tostring(Denomination)
+        })
+    end
+)
+```
+
+#### Handler Definition
+
+Before we jump into defining Handlers, let's first grasp what a `Handler` actually is.
+
+A `Handler` is a function that receives and evaluates messages within your process. It acts upon messages by taking them as parameters.
+
+`Handlers` is a library that provides a flexible way to manage and execute a series of handlers based on patterns. Each handler consists of a pattern function, a handle function, and a name. This library is suitable for scenarios where different actions need to be taken based on varying input criteria.
+
+The `Handlers.add` function adds a new handler or updates an existing handler by name. It takes in 3 parameters:
+
+- name
+- pattern
+- handler / function
+
+Here,
+
+- The name of the Handler is `info`.
+- Within the `Handlers.utils` module, there's a helpful function called **`hasMatchingTag(name, value)`** which returns a function that requires a message argument. These function compares the Tag Name and Value, if they are equal then it invokes the handle function.
+  Let's shed some light on what's happening behind the scenes:
+  - When you send a message to the token process, like **`Send({ Target = ao.id, Action = “Info”})`**, it's like dropping a reuest into a mailbox.
+  - This 'mailbox' is our Messenger Unit (MU), which carefully examines the message content. If it sees the keyword 'Info,' it knows it's time to find the right Handler to deal with it.
+  - Now, if the task requires some heavy lifting, like number crunching or data processing, the Messenger Unit isn't equipped for that. So, it passes the message over to the Computation Unit (CU). The CU handles the complex stuff, then sends the result as a **processed message** back to the MU.
+
+#### Understanding the function
+
+Inside this Handler, we have a function that takes Message (here,**`msg`)** as a parameter. This **`msg`** object has a predefined structure, which was explained here.
+
+As we now know that process communication within the `ao` is handled by messages. Therefore, the ao Module provides us with a set of functions to facilitate communication between different processes.
+The **`ao.send(msg)`** function is used to send a message to another process. In this context, **`Target = msg.From`** indicates that the message is intended for the sender's process. Along with this information, the function also includes additional tags, providing the sender with details about the token.
+
+#### Invoking the Handler
+
+In the aos interactive environment, the Send function is available globally for sending messages. When using Send, we specify the recipient process using the Target tag. For instance, if we want to send a message to our own process, identified by ao.id, where the token contract is deployed, we set ao.id as the Target. Adding an Action tag, such as "Info," tells the Messenger Unit (MU) which handler to invoke for processing the message. This approach ensures messages are sent to the right place and actions are taken accordingly within the ao environment.
+
+### Understanding the `Balances` Handler
+
+This Handler replies with the entire Balances Table, i.e., it allows processes to retrieve the token balances of all participants. It is a read-only Handler.
+
+```lua
+Handlers.add(
+    'balances', 
+    Handlers.utils.hasMatchingTag('Action', 'Balances'),
+    function(msg) 
+        ao.send({ 
+            Target = msg.From, 
+            Data = json.encode(Balances) 
+        }) 
+    end
+)
+```
+
+#### Handler Definition
+The name of Handler is `**balances`.**
+
+When you send a message to the token process using **`Send({ Target = ao.id, Action = "Balances" })`**, it triggers a request for information. This request is directed to the Messenger Unit (MU), which is responsible for handling incoming messages. The MU's job is to locate the appropriate Handler based on the matching tag—in this case, 'Balances.' Once the matching Handler is found, it retrieves the required information—in this instance, the Balances Table—and sends it back as a response.
+
+#### Understanding the function
+Similar to the above `Info` Handler function, the `ao.send` function sends a message to the Target process id which here is the sender’s process id. The additional thing here is the `Data`. It represents the data to send in message. 
+
+`json.encode(Balances)` is used to convert the **`Balances`** table into a JSON string format before sending it as part of the message data (**`Data`**) via **`ao.send()`**.
+
+The reason for using **`json.encode()`** is to ensure that the data being sent conforms to the expected format. Many messaging systems, including the one being used here, require data to be transmitted in a standardized format. By encoding the **`Balances`** table into JSON format, we ensure that it can be easily transmitted and decoded by the receiving process without any loss of information.
+
+#### Invoking the Handler
+
+```lua
+Send({ Target = ao.id, Action = "Balances" })
+```
+
+```lua
+Inbox[#Inbox].Data
+```
+
+### Understanding the `Balance` Handler
+
+The balance handler allows processes to retrieve the token balance of a participant based on his process ID. It is a read-only Handler.
+
+```lua
+Handlers.add(
+    'balance', 
+    Handlers.utils.hasMatchingTag('Action', 'Balance'), 
+    function(msg)
+        local bal = '0'
+
+        if (msg.Tags.Recipient and Balances[msg.Tags.Recipient]) then
+            bal = Balances[msg.Tags.Recipient]
+        elseif msg.Tags.Target and Balances[msg.Tags.Target] then
+            bal = Balances[msg.Tags.Target]
+        elseif Balances[msg.From] then
+            bal = Balances[msg.From]
+        end
+
+        ao.send({
+            Target = msg.From,
+            Balance = bal,
+            Ticker = Ticker,
+            Account = msg.Tags.Recipient or msg.From,
+            Data = bal
+        })
+    end
+)
+```
+
+#### Handler Definition
+This handler is set to trigger when a message with the matching tag 'Action' and value 'Balance' is received.
+
+#### Understanding the function
+Inside the handler function, it first initializes a variable **`bal`** to '0'.  It then checks if there is a specified target in the message tags (**`msg.Tags.Target`**) and if the target exists in the **`Balances`** table. If so, it retrieves the balance corresponding to that target. If no target is specified or the specified target does not exist in the **`Balances`** table, it retrieves the balance associated with the sender of the message (**`msg.From`**). 
+
+The retrieved balance is then converted to a string using **`tostring()`** and assigned to the **`bal`** variable. 
+
+Finally, it sends a message back to the sender (**`msg.From`**) containing the balance information along with additional tags such as the target, ticker symbol, and encoded balance data.
+
+
+#### Understanding the Message Flow
+
+- When you trigger the `**Balance`** Handler, the Messenger Unit (MU) receives the incoming message. It then extracts the message from the Outbox of the process, evaluates it, and then forwards it to the Scheduler Unit (SU) for processing.
+- SU orders the messages and stores them on Arweave. Once the message is appropriately ordered, SU forwards it to the Compute Unit (CU) for computation. 
+- CU executes the Handler function and retrieves the balance information and after that provides the result back to MU, which then prepares a response message containing the balance information.
+- MU sends the response message back to the sender process, completing the whole cycle.
+
+#### Invoking the Handler
+
+```lua
+Send({ Target = <token_process>, Action = "Balance" })
+```
+Here, `<token_process>` refers to the Process ID of the token.
+
+```lua
+Inbox[#Inbox].Data
+```
+
+### Understanding the `Transfer` Handler
+
+The balance handler allows processes to retrieve the token balance of a participant based on his process ID. It is a read-only Handler.
+
+```lua
+Handlers.add(
+    'transfer', 
+    Handlers.utils.hasMatchingTag('Action', 'Transfer'), 
+    function(msg)
+        assert(type(msg.Recipient) == 'string', 'Recipient is required!')
+        assert(type(msg.Quantity) == 'string', 'Quantity is required!')
+        assert(bint.__lt(0, bint(msg.Quantity)), 'Quantity must be greater than 0')
+
+        if not Balances[msg.From] then Balances[msg.From] = "0" end
+        if not Balances[msg.Recipient] then Balances[msg.Recipient] = "0" end
+
+        if bint(msg.Quantity) <= bint(Balances[msg.From]) then
+            Balances[msg.From] = utils.subtract(Balances[msg.From], msg.Quantity)
+            Balances[msg.Recipient] = utils.add(Balances[msg.Recipient], msg.Quantity)
+
+            --[[
+            Only send the notifications to the Sender and Recipient
+            if the Cast tag is not set on the Transfer message
+        ]]
+            --
+            if not msg.Cast then
+                -- Debit-Notice message template, that is sent to the Sender of the transfer
+                local debitNotice = {
+                    Target = msg.From,
+                    Action = 'Debit-Notice',
+                    Recipient = msg.Recipient,
+                    Quantity = msg.Quantity,
+                    Data = Colors.gray ..
+                        "You transferred " ..
+                        Colors.blue .. msg.Quantity .. Colors.gray .. " to " .. Colors.green .. msg.Recipient .. Colors
+                        .reset
+                }
+                -- Credit-Notice message template, that is sent to the Recipient of the transfer
+                local creditNotice = {
+                    Target = msg.Recipient,
+                    Action = 'Credit-Notice',
+                    Sender = msg.From,
+                    Quantity = msg.Quantity,
+                    Data = Colors.gray ..
+                        "You received " ..
+                        Colors.blue .. msg.Quantity .. Colors.gray .. " from " .. Colors.green .. msg.From .. Colors.reset
+                }
+
+                -- Add forwarded tags to the credit and debit notice messages
+                for tagName, tagValue in pairs(msg) do
+                    -- Tags beginning with "X-" are forwarded
+                    if string.sub(tagName, 1, 2) == "X-" then
+                        debitNotice[tagName] = tagValue
+                        creditNotice[tagName] = tagValue
+                    end
+                end
+
+                -- Send Debit-Notice and Credit-Notice
+                ao.send(debitNotice)
+                ao.send(creditNotice)
+            end
+        else
+            ao.send({
+                Target = msg.From,
+                Action = 'Transfer-Error',
+                ['Message-Id'] = msg.Id,
+                Error = 'Insufficient Balance!'
+            })
+        end
+    end
+)
+```
+
+#### Handler Definition
+Handlers.add() registers a new handler named ‘transfer’. It will be triggered when a message with the matching tag ‘Action’ and value ‘Transfer’ is received.
+
+
+#### Understanding the function
+Hey, take a breather! 😮‍💨 I know this function might seem a bit lengthy, but don't let it overwhelm you. Remember, Lua is all about simplicity, and that's exactly what we'll stick to as we break down this function together. So, let's unravel it step by step—no need to stress!
+
+To begin with, we did the Input Validation while sending the Message to invoke the `Transfer` Handler. This line ensures that the message contains a recipient tag and that it is of type string. If the condition is not met, an assertion error is raised with the message 'Recipient is required!'. Similar validation is performed for the 'Quantity' tag.
+
+After this the next step is to initialize the balances of both the sender and the recipient. If the sender's balance is not already recorded in the **`Balances`** table, it initializes it to "0". Similarly, if the recipient's balance is not already recorded, it also initializes it to "0". This ensures that both the sender and the recipient have balance entries in the **`Balances`** table, allowing for accurate tracking of their respective balances during the transfer process.
+
+
+#### Understanding the Transfer Execution
+
+Before we initiate the transfer, we make sure to check if the sender has enough balance to cover it and if it is true then we update the sender’s and receipient’s balances accordingly.
+
+After sending, you'll receive a printed message in the terminal similar to `Debit-Notice` on the sender's side and `Credit-Notice` on the recipient's side if the transfer is successful, else you’ll receive a message saying `Transfer-Error`.
+
+After that the code iterates through each tag in the original transfer message (`msg`) using a loop. For each tag, it checks if the tag name begins with `X-` indicating that it’s a forwarded tag. 
+If a tag starts with `X-`, it copies the tag and its corresponding value from the original message to both the debit notice (**`debitNotice`**) and credit notice (**`creditNotice`**) messages. But what does a **Forwarded Tag** mean exactly? In simple terms, forwarded tags refer to additional information or metadata included in a message that is passed along to subsequent messages or handlers.
+
+
+#### Understanding the Message Flow
+
+In this scenario, the flow of messages remains consistent as for the above Balance Handler. However, the key aspect to note is that the execution of the transfer function specifically occurs within the Compute Unit (CU).
+
+
+#### Invoking the Handler
+
+<Callout>If you need another process id, you can run aos [name] in another terminal window to get a new process id. Make sure it's not the same aos [name] as the one you're currently using.</Callout>
+
+```lua
+Send({ Target = <token_process>, Action = "Transfer", Recipient = <recipient_process>, Quantity = "1000000000000" })
+```
+Here, `<token_process>` refers to the Process ID of the token and `<recipient_process>` refers to the Process ID of the Receiver.
+
+
+### Understanding the `Mint` Handler
+
+```lua
+Handlers.add(
+    'mint', 
+    Handlers.utils.hasMatchingTag('Action', 'Mint'), 
+    function(msg)
+        assert(type(msg.Quantity) == 'string', 'Quantity is required!')
+        assert(bint(0) < bint(msg.Quantity), 'Quantity must be greater than zero!')
+
+        if not Balances[ao.id] then Balances[ao.id] = "0" end
+
+        if msg.From == ao.id then
+            -- Add tokens to the token pool, according to Quantity
+            Balances[msg.From] = utils.add(Balances[msg.From], msg.Quantity) 
+            ao.send({
+            Target = msg.From,
+            Data = Colors.gray .. "Successfully minted " .. Colors.blue .. msg.Quantity .. Colors.reset
+            })
+        else
+            ao.send({
+            Target = msg.From,
+            Action = 'Mint-Error',
+            ['Message-Id'] = msg.Id,
+            Error = 'Only the Process Id can mint new ' .. Ticker .. ' tokens!'
+            })
+        end
+    end
+)
+```
+
+#### Handler Definition
+Handlers.add() registers a new handler named ‘mint’. It will be triggered when a message with the matching tag `Action` and value `Mint` is received.
+
+#### Understanding the function
+Before starting the minting process, we perform two checks. Firstly, we ensure that the message contains a 'Quantity' tag and confirm that it is of type string. If this condition isn't met, an assertion error is triggered with the message 'Quantity is required!'. Secondly, we validate that the specified quantity is greater than zero using the bint library for arithmetic operations.
+
+Now moving onto the Minting of Tokens, we first check if the sender of the message is the ao process itself. If the sender is the ao process, it adds the specified quantity of tokens to the ao process's balance using the bint library for arithmetic operations. On successful mint, a message is returned indicating that the minting was successful.
+
+If the sender is not the ao process, it means the minting operation is unauthorized and hence sends an error message to the sender indicating that only the process owner can mint new tokens.
+
+
+#### Invoking the Handler
+
+```lua
+Send({ Target = <token_process>, Action = "Mint", Quantity = "10000" })
+```
+Here, `<token_process>` refers to the Process ID of the token.
+
+
+### Understanding the `Total-Supply` Handler
+
+```lua
+Handlers.add(
+    'totalSupply', 
+    Handlers.utils.hasMatchingTag('Action', 'Total-Supply'), 
+    function(msg)
+        assert(msg.From ~= ao.id, 'Cannot call Total-Supply from the same process!')
+
+        local totalSupply = bint(0)
+        for _, balance in pairs(Balances) do
+            totalSupply = utils.add(totalSupply, balance)
+        end
+
+        ao.send({
+            Target = msg.From,
+            Action = 'Total-Supply',
+            Data = tostring(totalSupply),
+            Ticker = Ticker
+        })
+    end
+)
+```
+
+#### Handler Definition
+The Handlers.add() function establishes a new handler named ‘totalSupply’. This handler is triggered upon receiving a message with the tag `Action` set to `Total-Supply`.
+
+#### Understanding the function
+Firstly, it verifies whether the message sender is not the same as the current `ao` process (**`ao.id`**). If the sender matches the `ao` process, it raises an assertion error indicating that calling `Total-Supply` from the same process is not permitted.
+
+Once the sender's identity is confirmed, the handler proceeds to calculate the total token supply. It initializes a variable named **`totalSupply`** using the binary integer library (**`bint`**) and sets its initial value to `0`. Then, it iterates through all balances stored in the **`Balances`** table and accumulates the balances to calculate the total supply. The **`utils.add`** function from the utility functions is employed to perform arithmetic addition on binary integers.
+
+After computing the total supply, the handler constructs a message containing the total supply value as a string (**`tostring(totalSupply)`**) and the ticker symbol (**`Ticker`**). This message is then sent back to the message sender specified in the original message.
+
+
+#### Invoking the Handler
+
+Upon invocation of the handler, a message is sent to the ao process with the Action tag set to Total-Supply. The handler then calculates the total token supply and returns the result to the sender, providing the current token supply.
+
+
+## ⏳ Loading the File
+
+If you've followed along with the tutorial, you'll have a `token.lua` file in the same directory as your aos process. From the aos prompt, load in the file.
+
+```lua
+.load token.lua
+```
+
+And...
+> Voila! You have successfully created your own token. 🎉🎉
+>
+
+You can find the complete code here:
+
+> 
+> https://github.com/0rbit-co/examples/blob/main/ao-basics/token.lua
+
+
+## 🤝 Need Help?
+
+Join us on [0RBIT’s Discord Channel](https://discord.gg/KWPkD96vdv) for help whenever you need it. We're here to support you every step of the way! 💫
