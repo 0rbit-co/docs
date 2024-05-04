@@ -26,9 +26,11 @@
     "title": "Developer"
   },
   "protocol": {
+    "title": "Protocol",
     "display": "hidden"
   },
   "node-operators": {
+    "title": "Node Operators",
     "display": "hidden"
   },
   "concepts": {
