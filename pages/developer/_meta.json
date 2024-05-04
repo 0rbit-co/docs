@@ -1,9 +1,6 @@
 {
-    "index": "Introduction",
+    "index": "Getting Started",
     "get-request": "GET Request",
-    "post-request": {
-        "title": "POST Request",
-        "display": "hidden"
-    },
+    "post-request": "POST Request",
     "quests": "Quests"
 }
