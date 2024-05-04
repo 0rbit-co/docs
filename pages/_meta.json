@@ -8,21 +8,13 @@
       "layout": "raw"
     }
   },
-  "concepts": {
-    "title": "Concepts",
-    "type": "page"
-  },
-  "protocol": {
-    "title": "Protocol",
-    "type": "page"
-  },
   "code": {
-    "title": "Developer",
+    "title": "Protocol",
     "type": "menu",
     "items": {
-      "developer": {
-        "title": "Developer",
-        "href": "/developer"
+      "protocol": {
+        "title": "Protocol",
+        "href": "/protocol"
       },
       "node-operators": {
         "title": "Node Operators",
@@ -31,10 +23,17 @@
     }
   },
   "developer": {
+    "title": "Developer"
+  },
+  "protocol": {
     "display": "hidden"
   },
   "node-operators": {
     "display": "hidden"
+  },
+  "concepts": {
+    "title": "Concepts",
+    "type": "page"
   },
   "learn-by-building": {
     "title": "Learn by Building",
