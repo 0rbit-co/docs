@@ -2,14 +2,14 @@
     "index": {
         "title": "Introduction"
     },
+    "token": {
+        "title": "$0RBT"
+    },
     "architecture": {
         "title": "Architecture"
     },
     "working": {
         "title": "How it works"
-    },
-    "token": {
-        "title": "$0RBT"
     },
     "staking": {
         "title": "Staking"

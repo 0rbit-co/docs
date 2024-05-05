@@ -4,7 +4,6 @@ import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
 import Card from "./Card";
 import Image from "next/image";
-import Footer from "./Footer";
 
 export const HomePage = ({
   children,
@@ -182,47 +181,3 @@ const cards = [
     link: "/concepts/what-is-arweave",
   },
 ];
-
-// import React from "react";
-
-// const HomePage = () => {
-//   return (
-//     <main className={`w-full lg:py-10`}>
-//       <div className="flex justify-center">
-//         <div className="flex flex-row gap-4 items-center w-full pb-8">
-//           <div className="flex flex-col gap-4 justify-center w-full">
-//             <div className="flex flex-col gap-3">
-//               <div className="sm:text-[32px] text-[20px] font-bold leading-[36px] tracking-wider">
-//                 Welcome to <span className="text-orange-400">0rbit's</span>{" "}
-//                 Documentation
-//               </div>
-//             </div>
-{
-  /* <div className="pt-4">
-<h3 className="bg-[#392515] p-3 border text-md border-orange-400 rounded-lg text-orange-300">
-    <span className="text-lg">💡 </span> This is the official Documentation
-    for the First Ever Oracle on Arweave
-  </h3>
-  </div>
-  <div className="pt-2">
-          Discover the world of 0rbit with our comprehensive suite of
-          resources!
-        </div>
-        <div className="pt-2">
-          Build with Limitless Data on <code>ao.</code> Bring any data in
-          your <code>ao</code> process using simple HTTP Get and Post
-          Requests.🚀
-        </div> */
-}
-
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="h-[1px] bg-orange-400/30 mt-10"></div>
-
-//     </main>
-//   );
-// };
-
-// export default HomePage;
