@@ -18,23 +18,23 @@ const headProp = () => {
     <head>
       <title>0rbit Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="0rbit Developer Docs" />
-      <meta name="description" content="0rbit Developer Docs | Documentation" />
+      <meta property="og:title" content="0rbit Technical Documentation" />
+      <meta name="description" content="0rbit Technical Documentation | The Decentralized Oracle on AO" />
       <meta
         property="og:description"
-        content={frontMatter.description || "0rbit Developer Docs"}
+        content={frontMatter.description || "0rbit Technical Documentation | The Decentralized Oracle on AO"}
       />
-      <meta property="og:image" content="public/images/logo/main.svg" />
+      <meta property="og:image" content="../images/logo/main.svg" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || "0rbit"} />
       <meta
         property="twitter:image"
-        content="https://raw.githubusercontent.com/megabyte0x/docs2/main/public/images/logo/main.svg"
+        content="https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/main.svg"
       ></meta>
-      <meta property="twitter:title" content="0rbit Developer Docs"></meta>
+      <meta property="twitter:title" content="0rbit Technical Documentation"></meta>
       <meta
         property="twitter:description"
-        content="0rbit Developer Docs"
+        content="0rbit Technical Documentation | The Decentralized Oracle on AO"
       ></meta>
       <link rel="shortcut icon" href="/favicon.ico" />
     </head>
@@ -47,15 +47,15 @@ const config: DocsThemeConfig = {
   useNextSeoProps() {
     return {
       titleTemplate: "0rbit Docs | %s",
-      defaultTitle: "0rbit Oracle on Arweave Developer Docs",
+      defaultTitle: "0rbit Technical Documentation",
       description:
-        "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
+        "0rbit Technical Documentation | The Decentralized Oracle on AO",
       openGraph: {
-        title: "0rbit Developer Docs | Oracle on Arweave",
-        description: "0rbit Decenralized Oracle on Arweave | Developer Docs",
+        title: "0rbit Technical Documentation",
+        description: "0rbit Technical Documentation | The Decentralized Oracle on AO",
         images: [
           {
-            url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
+            url: "https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/main.svg",
           },
         ],
       },
