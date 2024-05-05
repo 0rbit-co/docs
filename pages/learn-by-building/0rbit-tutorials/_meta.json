@@ -1,0 +1,8 @@
+{
+    "price-feed": "Price Feed",
+    "news-feed": "News Feed",
+    "vrf": {
+        "title": "VRF",
+        "display": "hidden"
+    }
+}

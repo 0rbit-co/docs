@@ -1,14 +1,11 @@
 {
-    "index": "Introduction",
+    "index": "Getting Started",
     "---": {
         "type": "separator"
     },
-    "price-feed": "Price Feed",
-    "news-feed": "News Feed",
-    "vrf": "VRF",
+    "0rbit-tutorials": "0rbit Tutorials",
     "----": {
         "type": "separator"
     },
-    "token": "Build a Token",
-    "swapping": "Swapping Process"
+    "ao-tutorials": "Basic ao Tutorials"
 }
