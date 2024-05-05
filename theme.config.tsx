@@ -36,6 +36,7 @@ const headProp = () => {
         property="twitter:description"
         content="0rbit Developer Docs"
       ></meta>
+      <link rel="shortcut icon" href="/favicon.ico" />
     </head>
   );
 };
@@ -107,7 +108,6 @@ const config: DocsThemeConfig = {
   },
   navigation: true,
   footer: { component: <div className=""><Footer /></div> },
-  faviconGlyph: "",
 };
 
 export default config;
