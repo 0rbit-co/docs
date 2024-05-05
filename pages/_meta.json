@@ -1,24 +1,44 @@
 {
-  "index": "Oracle",
-  "testnet": "Testnet Info",
-  "Features": {
-    "type": "separator"
+  "*": {
+    "type": "page"
   },
-  "fetch-http-data": "Fetch HTTP Data",
-  "post-http-data": "Post HTTP Data",
-  "examples": "Examples",
-  "Quests": {
-    "type": "separator"
+  "index": {
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
   },
-  "quests" : "Quests",
-  "Architecture": {
-    "type": "separator"
+  "code": {
+    "title": "Protocol",
+    "type": "menu",
+    "items": {
+      "protocol": {
+        "title": "Protocol",
+        "href": "/protocol"
+      },
+      "node-operators": {
+        "title": "Node Operators",
+        "href": "/node-operators"
+      }
+    }
   },
-  "architecture": "Architecture",
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/0rbitco",
-    "newWindow": true
+  "developer": {
+    "title": "Developer"
+  },
+  "protocol": {
+    "title": "Protocol",
+    "display": "hidden"
+  },
+  "node-operators": {
+    "title": "Node Operators",
+    "display": "hidden"
+  },
+  "concepts": {
+    "title": "Concepts",
+    "type": "page"
+  },
+  "learn-by-building": {
+    "title": "Learn by Building",
+    "type": "page"
   }
 }

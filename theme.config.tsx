@@ -1,14 +1,13 @@
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { Analytics } from "@vercel/analytics/react";
-import Script from "next/script";
 import { useRouter } from "next/router";
-import { tree } from "next/dist/build/templates/app-page";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import ClientOnly from "./pages/components/ClientOnly";
+import ClientOnly from "./components/ClientOnly";
+import Footer from "./components/Footer";
 
 const googleAnalyticsMeasurementId: string =
   process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
-// console.log(googleAnalyticsMeasurementId);
+
 const headProp = () => {
   const { asPath, defaultLocale, locale } = useRouter();
   const { frontMatter } = useConfig();
@@ -17,7 +16,7 @@ const headProp = () => {
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
   return (
     <head>
-      <title>0rbit Developer Docs</title>
+      <title>0rbit Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="0rbit Developer Docs" />
       <meta name="description" content="0rbit Developer Docs | Documentation" />
@@ -25,33 +24,26 @@ const headProp = () => {
         property="og:description"
         content={frontMatter.description || "0rbit Developer Docs"}
       />
-      <meta property="og:image" content="assets/images/logo/main.svg" />
+      <meta property="og:image" content="public/images/logo/main.svg" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || "0rbit"} />
       <meta
         property="twitter:image"
-        content="https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg"
+        content="https://raw.githubusercontent.com/megabyte0x/docs2/main/public/images/logo/main.svg"
       ></meta>
       <meta property="twitter:title" content="0rbit Developer Docs"></meta>
       <meta
         property="twitter:description"
         content="0rbit Developer Docs"
       ></meta>
+      <link rel="shortcut icon" href="/favicon.ico" />
     </head>
   );
 };
 
 const config: DocsThemeConfig = {
-  project: {
-    link: "https://github.com/0rbit-co",
-  },
-  main: ({ children }) => (
-    <>
-      <ClientOnly>{children}</ClientOnly>
-      <Analytics />
-      <GoogleAnalytics gaId={googleAnalyticsMeasurementId} />
-    </>
-  ),
+  primaryHue: 37,
+  docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
   useNextSeoProps() {
     return {
       titleTemplate: "0rbit Docs | %s",
@@ -60,8 +52,7 @@ const config: DocsThemeConfig = {
         "0rbit Oracle on Arweave | Developer Docs | Documentation for Data",
       openGraph: {
         title: "0rbit Developer Docs | Oracle on Arweave",
-        description:
-          "0rbit Developer Docs | Oracle on Arweave | Orbit Documentation | Decenralized Oracle Orbit 0rbit",
+        description: "0rbit Decenralized Oracle on Arweave | Developer Docs",
         images: [
           {
             url: "https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/main.svg",
@@ -75,47 +66,48 @@ const config: DocsThemeConfig = {
       },
     };
   },
-  editLink: {
-    text: "Edit this page on GitHub",
-  },
+  head: headProp,
+  darkMode: false,
   logo: (
     <>
       <img
-        src="https://raw.githubusercontent.com/megabyte0x/docs2/main/assets/images/logo/Orbit%20Icon.svg"
+        src="../images/logo/lightLogo.svg"
         alt="0rbit"
-        width="40"
-        height="40"
+        width="70"
+        height="70"
       />
-      <span style={{ marginLeft: ".4em", fontWeight: 800 }}>0rbit</span>
+      {/* <span style={{ marginLeft: ".4em", fontWeight: 800 }}>0rbit</span> */}
     </>
   ),
-  logoLink: "http://www.0rbit.co",
-  navigation: true,
-  head: headProp,
-  faviconGlyph: "💫",
+  logoLink: "http://docs.0rbit.co",
+  project: {
+    link: "https://github.com/0rbit-co",
+  },
   chat: {
     link: "https://discord.gg/JVSjqaKJgV",
   },
-  docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
-  footer: {
-    text: (
-      <span>
-        MIT {new Date().getFullYear()} ©{" "}
-        <a href="https://0rbit.co" target="_blank">
-          0rbit
-        </a>
-        .
-      </span>
-    ),
+  sidebar: {
+    autoCollapse: true,
+  },
+  main: ({ children }) => (
+    <>
+      <ClientOnly>{children}</ClientOnly>
+      <Analytics />
+      <GoogleAnalytics gaId={googleAnalyticsMeasurementId} />
+    </>
+  ),
+  toc: {
+    backToTop: true,
+  },
+  editLink: {
+    text: "Edit this page on GitHub",
   },
   feedback: {
     content: "Is this page helpful?",
     labels: "feedback",
   },
-  darkMode: true,
-  sidebar: {
-    autoCollapse: true,
-  },
+  navigation: true,
+  footer: { component: <div className=""><Footer /></div> },
 };
 
 export default config;

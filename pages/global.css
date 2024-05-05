@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* JETBRAINS */
+@font-face {
+  font-family: "Regular"; /*Can be any text*/
+  src: local("JetBrainsMonoRegular"),
+    url("/_font/JetBrainsMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Medium"; /*Can be any text*/
+  src: local("JetBrainsMonoMedium"),
+    url("/_font/JetBrainsMono-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Light"; /*Can be any text*/
+  src: local("JetBrainsMonoLight"),
+    url("/_font/JetBrainsMono-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ExtraLight"; /*Can be any text*/
+  src: local("JetBrainsMonoExtraLight"),
+    url("/_font/JetBrainsMono-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Thin"; /*Can be any text*/
+  src: local("JetBrainsMonoThin"),
+    url("/_font/JetBrainsMono-Thin.ttf") format("truetype");
+}
+
+/* RALEWAY */
+@font-face {
+  font-family: "Rale-Regular"; /*Can be any text*/
+  src: local("RalewayRegular"),
+    url("/_font/Raleway/static/Raleway-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Rale-Medium"; /*Can be any text*/
+  src: local("RalewayMedium"),
+    url("/_font/Raleway/static/Raleway-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Rale-Light"; /*Can be any text*/
+  src: local("RalewayLight"),
+    url("/_font/Raleway/static/Raleway-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Rale-ExtraLight"; /*Can be any text*/
+  src: local("RalewayExtraLight"),
+    url("/_font/Raleway/static/Raleway-ExtraLight.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Rale-Thin"; /*Can be any text*/
+  src: local("RalewayThin"),
+    url("/_font/Raleway/static/Raleway-Thin.ttf") format("truetype");
+}
+
+* {
+  transition: all 0.6s;
+}

@@ -1,0 +1,18 @@
+## An Introduction to ao
+
+Technically,
+
+>The `ao` computer is the **[actor oriented](https://en.wikipedia.org/wiki/Actor_model)** machine that emerges from the network of nodes that adhere to its core data protocol, running on the **[Arweave](https://arweave.org/)** network. It offers a unified computing environment hosted on a heterogenous set of nodes in a distributed network where parallel processes coordinate via an open message passing layer.
+
+Uh oh, was it too much for two lines? 😓 Don't worry, we got you covered. Let us go one step at a time:
+
+1. Hyper-parallel computer: Imagine a big factory with different machines working together to produce goods. The `ao` computer is like that factory—it's made up of many computers on the Arweave network, each handling its own tasks but communicating effectively to keep everything running smoothly. 
+2. Processes: In ao, a process is a set of instructions that can be executed by the network.
+3. Messages: Every interaction with a process is represented by a message. Infact, every interaction in the whole network is in the form of messages.
+4. `ao` Units: Consider a postal-service analogy to understand how different `ao` units interact with each other and what are their individual goals.
+    
+    - **Message Unit (MU)**: The MU acts like the postal carrier. When you drop a letter into a mailbox, the postal carrier picks it up and ensures it gets to its destination. Similarly, the MU takes messages and are responsible for the circulation of messages. It ensures that the messages are ordered by SU and then coordinates with the CU for computation.
+    - **Scheduler Unit (SU)**: Picture the SU as the central sorting facility of the postal service. Just like how letters are sorted based on their destination, the SU organizes messages, assigns them numbers, and ensures they're processed in the correct order. If there's a backlog, the SU might hold onto some messages temporarily (cache) until they can be handled.
+    - **Compute Unit (CU)**: Imagine the CU as a team of experts at the postal service. When a letter requires special handling or additional processing, the CU steps in. For example, if a letter needs to be translated or decoded, the CU handles it. They may consult with the SU for guidance or directly access the necessary resources to complete their task. Once they're done, they send the processed letter back to the MU for final delivery.
+
+Phew! 😌 After going through all that information, you now have a good understanding of how `ao` works under the hood. If you want to learn more about `ao` and how it operates, you can check it out [here](https://ao.arweave.dev/#/spec).

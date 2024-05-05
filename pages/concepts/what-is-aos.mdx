@@ -1,0 +1,62 @@
+import { Callout } from 'nextra/components'
+
+## An Introduction to `aos`
+
+Welcome to the aos quick tour. This tutorial will guide you through aos's essential global functions and variables, providing a solid foundation for effective interaction and utilization.
+
+### Installing aos
+
+The local client of aos is very simple to install. Just make sure you have:
+1. NodeJS version 20+
+2. A code editor of your choice.
+
+Once you have NodeJS on your machine, all you need to do is install aos and run it:
+
+```bash
+npm i -g https://get_ao.g8way.io
+```
+
+After installation, we can simply run the command itself to start a new aos process!
+
+```bash
+aos
+```
+
+### What is `aos` ?
+
+aos is a different approach to building Processes or Contracts, the ao computer is a decentralized computer network that allows compute to run anywhere and aos in a unique interactive shell. You can use aos as your personal operating system, your development environment for building ao Processes.
+
+### Introduction to Inbox
+
+Inbox is a Lua table that stores all messages received by your process but not yet handled. You can check Inbox to see incoming messages. Iterate through Inbox[x] to process these messages.
+
+<Callout>Tip: To display the last message received by your process, use ```Inbox[#Inbox].Data```. To display the transaction ID of the message received, use ```Inbox[#Inbox].Id```.</Callout>
+
+### Introduction to Globals
+
+In aos process there are some Globals that can make development a little more intuitive.
+
+| Name          | Description                                                                                     | Type           |
+|---------------|-------------------------------------------------------------------------------------------------|----------------|
+| Inbox         | This is a Lua table that stores all the messages that are received and not handled by any handlers. | Table (Array)  |
+| Send(Message) | This is a global function available in the interactive environment that allows you to send messages to Processes. | Function       |
+| Spawn(Module, Message) | This global function available in the aos interactive environment allows you to spawn processes. | Function       |
+| Name          | A string set on init describing the name of your process.                                       | String         |
+| Owner         | A string set on init of the process documenting the owner. Changing this value can brick your ability to interact with your process. | String         |
+| Handlers      | A Lua Table containing helper functions allowing you to create handlers executing functionality based on pattern matching on inbound messages. | Table          |
+| Dump          | A function taking any Lua Table and generating a print-friendly output of the data.              | Function       |
+| Utils         | A functional utility library with functions like map, reduce, filter.                            | Module         |
+| ao            | Core function library for sending messages and spawning processes.                               | Module         |
+
+
+### Introduction to Modules
+
+In aos there are some built in common lua modules that are already available for you to work with, these modules can be referenced with a "require" function.
+
+| Name     | Description                                                                                           |
+|----------|-------------------------------------------------------------------------------------------------------|
+| json     | A JSON module that allows you to encode and decode JSON documents.                                      |
+| ao       | Contains ao specific functions like send and spawn.                                                     |
+| .base64  | A Base64 module that allows you to encode and decode Base64 text.                                        |
+| .pretty  | A pretty print module using the function tprint to output formatted syntax.                             |
+| .utils   | A utility function library.                                                                            |
