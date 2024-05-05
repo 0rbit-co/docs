@@ -29,7 +29,7 @@ const headProp = () => {
       <meta property="og:title" content={frontMatter.title || "0rbit"} />
       <meta
         property="twitter:image"
-        content="https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/main.svg"
+        content="https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/logo.svg"
       ></meta>
       <meta property="twitter:title" content="0rbit Technical Documentation"></meta>
       <meta
@@ -55,7 +55,7 @@ const config: DocsThemeConfig = {
         description: "0rbit Technical Documentation | The Decentralized Oracle on AO",
         images: [
           {
-            url: "https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/main.svg",
+            url: "https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/logo.svg",
           },
         ],
       },
