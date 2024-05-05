@@ -72,9 +72,9 @@ import { FaTwitter, FaDiscord, FaGithub } from "react-icons/fa";
 const Footer = () => {
   const date = new Date();
   return (
-    <footer className="">
-      <div className="mx-auto bg-[#151515] border-t border-white/60 px-4 py-8 md:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between">
+    <footer className="bg-[#151515] border-t border-white/60 px-4 py-8 md:px-8">
+      <div className="mx-auto w-full max-w-[1000px]">
+        <div className="flex max-w-[1000px] flex-col md:flex-row items-center justify-between">
           <div className="flex-shrink-0">
             <div className="flex justify-center flex-col items-center lg:items-start">
             <Image
