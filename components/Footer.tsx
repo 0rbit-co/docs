@@ -10,22 +10,22 @@ const Footer = () => {
         <div className="flex max-w-[1000px] flex-col md:flex-row items-center justify-between">
           <div className="flex-shrink-0">
             <div className="flex justify-center flex-col items-center lg:items-start">
-            <Image
-              src="/images/logo/lightLogo.svg"
-              width={80}
-              height={80}
-              alt="logo"
-            />
-            <p className="text-white text-xs font-medium mt-2">
-              The Decentralized Oracle Network
-            </p>
+              <Image
+                src="/images/logo/lightLogo.svg"
+                width={80}
+                height={80}
+                alt="logo"
+              />
+              <p className="text-white text-xs font-medium mt-2">
+                The Decentralized Oracle Network
+              </p>
             </div>
           </div>
           <div className="mt-4 md:mt-0 md:ml-4 flex items-center">
             <SocialLink href="https://twitter.com/0rbitco">
               <FaTwitter />
             </SocialLink>
-            <SocialLink href="https://discord.gg/tKHsEAUp9p">
+            <SocialLink href="https://discord.gg/JVSjqaKJgV">
               <FaDiscord />
             </SocialLink>
             <SocialLink href="https://github.com/0rbit-co/">
