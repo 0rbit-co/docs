@@ -9,7 +9,8 @@
 		"title": "What is AOS?"
 	},
 	"use-cases": {
-		"title": "Use Cases"
+		"title": "Use Cases",
+		"display": "hidden"
 	},
 	"index": {
 		"display": "hidden"
