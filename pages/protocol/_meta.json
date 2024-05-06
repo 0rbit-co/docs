@@ -6,12 +6,15 @@
         "title": "$0RBT"
     },
     "architecture": {
-        "title": "Architecture"
+        "title": "Architecture",
+        "display": "hidden"
     },
     "working": {
-        "title": "How it works"
+        "title": "How it works",
+        "display": "hidden"
     },
     "staking": {
-        "title": "Staking"
+        "title": "Staking",
+        "display": "hidden"
     }
 }

@@ -3,31 +3,18 @@
     "type": "page"
   },
   "index": {
+    "title": "",
     "display": "hidden",
     "theme": {
       "layout": "raw"
     }
   },
-  "code": {
+  "protocol": {
     "title": "Protocol",
-    "type": "menu",
-    "items": {
-      "protocol": {
-        "title": "Protocol",
-        "href": "/protocol"
-      },
-      "node-operators": {
-        "title": "Node Operators",
-        "href": "/node-operators"
-      }
-    }
+    "type": "page"
   },
   "developer": {
     "title": "Developer"
-  },
-  "protocol": {
-    "title": "Protocol",
-    "display": "hidden"
   },
   "node-operators": {
     "title": "Node Operators",
