@@ -24,7 +24,7 @@ const headProp = () => {
         property="og:description"
         content={frontMatter.description || "0rbit Technical Documentation | The Decentralized Oracle on AO"}
       />
-      <meta property="og:image" content="../images/logo/main.svg" />
+      <meta property="og:image" content="/images/logo/main.svg" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || "0rbit"} />
       <meta
@@ -45,8 +45,11 @@ const config: DocsThemeConfig = {
   primaryHue: 37,
   docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
   useNextSeoProps() {
+    const { asPath } = useRouter()
+    let _titleTemplate: string = asPath === "/" ? "0rbit Docs" : "0rbit Docs | %s";
+
     return {
-      titleTemplate: "0rbit Docs | %s",
+      titleTemplate: _titleTemplate,
       defaultTitle: "0rbit Technical Documentation",
       description:
         "0rbit Technical Documentation | The Decentralized Oracle on AO",
@@ -71,7 +74,7 @@ const config: DocsThemeConfig = {
   logo: (
     <>
       <img
-        src="../images/logo/lightLogo.svg"
+        src="/images/logo/lightLogo.svg"
         alt="0rbit"
         width="70"
         height="70"
