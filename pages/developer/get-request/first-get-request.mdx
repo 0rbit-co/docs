@@ -2,7 +2,7 @@ import { Callout } from 'nextra/components'
 
 # First GET Request
 
-In this tutorial, we will learn how to make a GET request on `0rbit` process. 
+In this tutorial, we will learn how to make a GET request on an `0rbit` process. 
 
 ## 🔑 Prerequisites
 
@@ -11,7 +11,7 @@ In this tutorial, we will learn how to make a GET request on `0rbit` process.
 - Some $0RBT. _Learn how to get $0RBT [here](/protocol/token#how-to-get-0rbt)_
 - Any Code Editor (VSCode, Sublime Text, etc)
 
-If you are ready with the above prerequisites, 
+If you are ready with the above prerequisites... Let's get started!
 
 ## 🛠️ Let's Start Building 
 
@@ -24,6 +24,8 @@ touch 0rbit-Get-Request.lua
 ```
 
 ### Initialize the Variables
+
+Within `0rbit-Get-Request.lua`, initialize the following variables:
 
 ```lua
 local json = require("json")
@@ -39,7 +41,7 @@ ReceivedData = ReceivedData or {}
 
 ### Make the Request
 
-The following code contains the Handler that will send 1 $0RBT to the `0rbit` process and make the GET request for the `BASE_URL`
+The following code contains the Handler that will send 1 $0RBT to the `0rbit` process and make the GET request for the `BASE_URL`.  Add the Handler to the `0rbit-Get-Request.lua` file.
 
 ```lua
 Handlers.add(
@@ -67,21 +69,21 @@ Breakdown of the above code:
 
     | __Tag__        | __Description__ |
     | :------------ | :---------: |
-    | Target        |    The processId of the recipient. In this case, it's the $0RBT token processId.    |
+    | Target        |    The process ID of the recipient. In this case, it's the $0RBT token process ID.    |
     | Action     | The tag that defines the handler to be called in the recipient process. In this case it's `Transfer`   |
-    | Recipient |     The tag that accepts the processId to whom the $0RBT will be sent. In this case, it's the 0rbit processId.        |
+    | Recipient |     The tag that accepts the process ID to whom the $0RBT will be sent. In this case, it's the 0rbit process ID.        |
     | Quantity | The amount of $0RBT to be sent. |
     | ["X-Url"] | The _forwarded-tag_ which contains the URL and the same will be used by the __0rbit process__ to fetch the data. |
     | ["X-Action"] | The _forwarded-tag_ which contains the action to be performed by the __0rbit process__. In this case, it's __Get-Real-Data__. |
 
 ### Receive Data
 
-The following code contains the Handler that will receive the data from the `0rbit` process and print it.
+The following code contains the Handler that will receive the data from the `0rbit` process and print it. Just as you did with the `Get-Request` handler, add the following code to the `0rbit-Get-Request.lua` file.
 
 ```lua
 Handlers.add(
     "Receive-Data",
-    Handlers.utils.hasMatchingTag("Action", "Receive-Data-Feed"),
+    Handlers.utils.hasMatchingTag("Action", "Recieve-Response"),
     function(msg)
         local res = json.decode(msg.Data)
         ReceivedData = res
@@ -118,16 +120,16 @@ Breakdown of the above code:
 ### Load the process
 
     ```bash
-    load 0rbit-Get-Request.lua
+    .load 0rbit-Get-Request.lua
     ```
 
 ### Fund your process 
 
-Transfer some $0RBT to your processID. 
+Transfer some $0RBT to your process ID. 
 
 ### Call the Handler 
 
-    Call the handler, who will create a request for the 0rbit process.
+    Call the handler, which will create a request for the 0rbit process.
 
     ```bash
     Send({ Target= ao.id, Action="First-Get-Request" })
