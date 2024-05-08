@@ -202,13 +202,13 @@ The `ReceiveData` handler is called when the 0rbit process sends the fetched dat
 ```lua
 Handlers.add(
     "ReceiveData",
-    Handlers.utils.hasMatchingTag("Action", "Receive-Data-Feed"),
+    Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
     receiveData
 )
 ```
 Breakdown of the above code:
 - __ReceivingData__: The name of the handler.
-- `Handlers.utils.hasMatchingTag("Action", "Receive-Data-Feed")`: Checks if the message action tag is `Receive-Data-Feed`
+- `Handlers.utils.hasMatchingTag("Action", "Receive-Response")`: Checks if the message action tag is `Receive-Response`
 - `receiveData`: The function that updates the token prices in the `TOKEN_PRICES` table.
 
 ## Run the Process
