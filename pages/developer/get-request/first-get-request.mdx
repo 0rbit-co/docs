@@ -81,7 +81,7 @@ The following code contains the Handler that will receive the data from the `0rb
 ```lua
 Handlers.add(
     "Receive-Data",
-    Handlers.utils.hasMatchingTag("Action", "Receive-Data-Feed"),
+    Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
     function(msg)
         local res = json.decode(msg.Data)
         ReceivedData = res
@@ -92,7 +92,7 @@ Handlers.add(
 Breakdown of the above code:
 - `Handlers.add` is used to add a new handler to the `ao` process.
 - __Receive-Data__ is the name of the handler.
-- `Handlers.utils.hasMatchingTag` is a function that checks if the incoming message has the matching tag same as the __Receive-Data-Feed__.
+- `Handlers.utils.hasMatchingTag` is a function that checks if the incoming message has the matching tag same as the __Receive-Response__.
 - `function(msg)` is the function executed when the handler is called.
     - `json.decode` is used to decode the JSON data received.
     - `ReceivedData = res` stores the received data in the `ReceivedData` variable.
