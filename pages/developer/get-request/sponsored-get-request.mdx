@@ -6,7 +6,7 @@ import { Callout } from 'nextra/components'
   This method is for testing purposes only. It is not recommended to use this method in production.
 </Callout>
 
-In this tutorial, we will learn how to make a GET request on `0rbit` process with the Sponsored method.
+In this tutorial, we will learn how to make a GET request on an `0rbit` process with the Sponsored method.
 
 ## 🔑 Prerequisites
 - Understanding of the [ao](/concepts/what-is-ao) and [aos](/concepts/what-is-aos).
@@ -63,7 +63,7 @@ Breakdown of the above code:
 - `Send` is the function that takes several tags as the arguments and creates a message on the ao: 
     | __Tag__        | __Description__ |
     | :------------ | :---------: |
-    | Target        |    The processId of the recipient. <br/> In this case, it's the `0RBIT` processId.    |
+    | Target        |    The process ID of the recipient. <br/> In this case, it's the `0RBIT` process ID.    |
     | Action     | The tag that defines the handler to be called in the recipient process. <br/> In this case, it's `Get-Real-Data`    |
     | Url| The tag that contains URL to be used by the __0rbit process__ to fetch the data. |
 
@@ -74,7 +74,7 @@ The following code contains the Handler that will receive the data from the `0rb
 ```lua
 Handlers.add(
     "Receive-Data",
-    Handlers.utils.hasMatchingTag("Action", "Receive-Data-Feed"),
+    Handlers.utils.hasMatchingTag("Action", "Recieve-Response"),
     function(msg)
         local res = json.decode(msg.Data)
         ReceivedData = res
@@ -85,7 +85,7 @@ Handlers.add(
 Breakdown of the above code:
 - `Handlers.add` is used to add a new handler to the `ao` process.
 - __Receive-Data__ is the name of the handler.
-- `Handlers.utils.hasMatchingTag` is a function that checks if the incoming message has the matching tag same as the __Receive-Data-Feed__.
+- `Handlers.utils.hasMatchingTag` is a function that checks if the incoming message has the matching tag same as the __Recieve-Response__.
 - `function(msg)` is the function executed when the handler is called.
     - `json.decode` is used to decode the JSON data received.
     - `ReceivedData = res` stores the received data in the `ReceivedData` variable.
@@ -111,12 +111,12 @@ Breakdown of the above code:
 ### Load the process
 
     ```bash
-    load 0rbit-Get-Request.lua
+    .load 0rbit-Get-Request.lua
     ```
 
 ### Fund your process 
 
-Transfer some $0RBT to your processID. 
+Transfer some $0RBT to your process ID. 
 
 ### Call the Handler 
 
