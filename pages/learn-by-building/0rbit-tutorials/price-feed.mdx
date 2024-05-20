@@ -1,4 +1,4 @@
-import { Callout } from 'nextra/components'
+import { Callout, Steps } from 'nextra/components'
 
 # Price Feed
 
@@ -179,22 +179,22 @@ Breakdown of the above code:
 - `Handlers.utils.hasMatchingTag("Action", "Get-Token-Price")`: Checks if the message action tag is `Get-Token-Price`
 - `getTokenPrice`: The function that sends the latest price of a token from the `TOKEN_PRICES` table.
 
-#### Cron Handler
+#### Fetch Price Handler
 
-The `CronTick` handler creates a cron job on the process. This handler will fetch the token prices in the defined period, and update them in the `TOKEN_PRICES` table.
+The `FetchPrice` handler will fetch and update the token prices in the `TOKEN_PRICES` table.
 
 ```lua
 Handlers.add(
-    "CronTick",
-    Handlers.utils.hasMatchingTag("Action", "Cron"),
+    "FetchPrice",
+    Handlers.utils.hasMatchingTag("Action", "Fetch-Price"),
     fetchPrice
 )
 ```
 
 Breakdown of the above code:
-- __CronTick__: The name of the handler.
-- `Handlers.utils.hasMatchingTag("Action", "Cron")`: Checks if the message action tag is `Cron`
-- `fetchPrice`: The function that sends a GET Request to 0rbit process to fetch the token prices.
+- __FetchPrice__: The name of the handler.
+- `Handlers.utils.hasMatchingTag("Action", "Fetch-Price")`: Checks if the message action tag is `Fetch-Price`
+- `fetchPrice`: The function sends a GET Request to 0rbit process to fetch the token prices.
 
 #### Receive Data Handler
 The `ReceiveData` handler is called when the 0rbit process sends the fetched data to the process.
@@ -213,40 +213,37 @@ Breakdown of the above code:
 
 ## Run the Process
 
-### Open your terminal 
+Open your terminal in the directory that contains `0rbit-Price-Feed.lua`
 
-Open your terminal in the directory that contains `0rbit-Price-Feed.lua` and enter the following command:
-
+<Steps>
+### Create a new process and load the script
 ```bash
-aos 0rbitPriceFeed --cron 30-seconds
+aos 0rbitPriceFeed --load 0rbit-Price-Feed.lua
 ```
-The above command will create a new process with the name __0rbitPriceFeed__ and set a cron job every 30 seconds.
-
-### Load your process
-
-Load your script into the process:
-
-```bash
-.load 0rbit-Price-Feed.lua
-```
+The above command will create a new process with the name __0rbitPriceFeed__ and load `0rbit-Price-Feed.lua` into it.
 
 ### Fund your process 
 
-Transfer some $0RBT to your processID. 
+Transfer some $0RBT to your processID _OR_ get a drop of 10 $0RBT using the following command:
+```lua
+Send({Target="cxhbOnMAS-OPoETj9BetZ-KA3zZ9AWYMrkbKd9WRJ3k", Action="Get-Drop"})
+```
 
-### Monitor Cron Job
+### Fetch the Token Prices
 
-Now you can start monitoring the real-time messaging of the cron:
-    
-```bash
-.monitor
+```lua
+Send({ Target = ao.id, Action="Fetch-Price"})
 ```
 
 ### Check the Token Price
 
-```bash
-Send({ Target = ao.id, Action="Get-Token-Price", Tags = { Token = "ethereum" }})
+```lua
+Send({ Target = ao.id, Action="Get-Token-Price", Tags = { Token = "AR" }})
 ```
+
+</Steps>
+
+
 
 ---
 ___Voila! You have successfully created a Price Feed Process. 🎉___
