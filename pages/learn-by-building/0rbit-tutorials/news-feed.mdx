@@ -1,4 +1,4 @@
-import { Callout } from 'nextra/components'
+import { Steps, Callout } from 'nextra/components'
 
 # News Feed
 
@@ -8,7 +8,7 @@ In the tutorial, we will create an `ao` process that provides the latest News Fe
 
 - Understanding of the [ao](/concepts/what-is-ao) and [aos](/concepts/what-is-aos).
 - aos installed on your system.
-- Some $0RBT. _Learn how to get $0RBT [here](/protocol/token#how-to-get-0rbt)_
+- Some $0RBT. _Learn how to get $0RBT [here](/protocol/token/how-to-get)_
 - Any Code Editor (VSCode, Sublime Text, etc)
 
 If you are ready with the above prerequisites, 
@@ -148,22 +148,22 @@ Breakdown of the above code:
 - `Handlers.utils.hasMatchingTag("Action", "Get-News")`: Checks if the message action tag is `Get-News`.
 - `getNews`: The function that sends the latest news from the `NEWS` table.
 
-#### Cron Handler
+#### Fetch News Handler
 
-The `CronTick` handler creates a cron job on the process. This handler will fetch the latest news in the defined period and update it in the `NEWS` table.
+The `FetchNews` handler will fetch and update the latest news and update the `NEWS` table.
 
 ```lua
 Handlers.add(
-    "CronTick",
-    Handlers.utils.hasMatchingTag("Action", "Cron"),
+    "FetchNews",
+    Handlers.utils.hasMatchingTag("Action", "Fetch-News"),
     fetchNews
 )
 ```
 
 Breakdown of the above code:
-- __CronTick__: The name of the handler.
-- `Handlers.utils.hasMatchingTag("Action", "Cron")`: Checks if the message action tag is `Cron`
-- `fetchNews`: The function that sends a GET Request to 0rbit process to fetch the latest news.
+- __FetchNews__: The name of the handler.
+- `Handlers.utils.hasMatchingTag("Action", "Fetch-News")`: Checks if the message action tag is `Fetch-News`
+- `fetchNews`: The function sends a GET Request to 0rbit process to fetch the latest news.
 
 #### Receive Data Handler
 The `ReceiveData` handler is called when the 0rbit process sends the fetched data to the process.
@@ -182,40 +182,30 @@ Breakdown of the above code:
 
 ## Run the Process
 
-### Open your terminal
-
-Open your terminal in the directory that contains `0rbit-News-Feed.lua` and enter the following command:
-
+<Steps>
+### Create a new process and load the script
 ```bash
-aos 0rbitNewsFeed --cron 30-seconds
+aos 0rbitNewsFeed --load 0rbit-News-Feed.lua
 ```
-The above command will create a new process with the name __0rbitNewsFeed__ and set a cron job every 30 seconds.
-
-### Load your process
-
-Load your script into the process:
-
-```bash
-.load 0rbit-News-Feed.lua
-```
+The above command will create a new process with the name __0rbitNewsFeed__ and load `0rbit-News-Feed.lua` into it.
 
 ### Fund your process 
 
-Transfer some $0RBT to your processID. 
+Transfer some $0RBT to your processID.
 
-### Monitor Cron Job
+### Fetch the Latest News
 
-Now you can start monitoring the real-time messaging of the cron:
-    
-```bash
-.monitor
+```lua
+Send({ Target = ao.id, Action="Fetch-News"})
 ```
 
-### Check the News Feed
+### Check the latest data
 
-```bash
+```lua
 Send({ Target = ao.id, Action="Get-News"})
 ```
+
+</Steps>
 
 ---
 ___Voila! You have successfully created a News Feed Process. 🎉___

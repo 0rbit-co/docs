@@ -1,8 +1,28 @@
+import { Steps } from "nextra/components"
+
 # $0RBT
 
 `$0RBT` Point is the token used to pay for using the 0rbit network.
 
-The processId for the 0RBT is [BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc](https://www.ao.link/entity/BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc)
+The processId for the 0RBT is [BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc](https://www.ao.link/token/BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc)
 
+## How to check your $0RBT balance
 
+To check your $0RBT balance, follow these steps:
 
+<Steps>
+    ### Run your aos
+    
+
+    ### Save the token process ID 
+    
+    ```lua
+    _0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
+    ```
+
+    ### Send the message to the $0RBT process ID
+    
+    ```lua
+    Send({Target = _0RBT_TOKEN, Tags = {Action = "Balance"}})
+    ```
+</Steps>
