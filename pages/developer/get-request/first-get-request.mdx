@@ -1,4 +1,4 @@
-import { Callout } from 'nextra/components'
+import { Callout, Steps } from 'nextra/components'
 
 # First GET Request
 
@@ -107,23 +107,12 @@ Breakdown of the above code:
 
 ## 🏃 Run the process 
 
-### Open your terminal 
-
-    Open your terminal in the directory that contains `0rbit-Get-Request.lua` and start the aos.
-    
-    ```bash
-    aos
-    ```
-
-### Load the process
-
-    ```bash
-    .load 0rbit-Get-Request.lua
-    ```
-
-### Fund your process 
-
-Transfer some $0RBT to your processID. 
+<Steps>
+### Create a new process and load the script
+```bash
+aos 0rbitGetRequest --load 0rbit-Get-Request.lua
+```
+The above command will create a new process with the name __0rbitGetRequest__ and load `0rbit-Get-Request.lua` into it.
 
 ### Call the Handler 
 
@@ -188,6 +177,8 @@ Transfer some $0RBT to your processID.
             }
         ```
     </details>
+
+</Steps>
 
 ---
 ___Voila! You have successfully made your first GET request on the 0rbit process. 🎉___
