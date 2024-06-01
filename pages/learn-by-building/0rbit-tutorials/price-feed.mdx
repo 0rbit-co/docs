@@ -94,7 +94,7 @@ The `fetchTokenPrice` function fetches the token's price from the CoinGecko API 
 ```lua
 function fetchPrice()
     local url;
-    local token_ids;
+    local token_ids="";
 
     for _, v in pairs(TOKEN_PRICES) do
         token_ids = token_ids .. v.coingecko_id .. ","

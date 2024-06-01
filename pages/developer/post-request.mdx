@@ -1,0 +1,66 @@
+import { Callout, Cards, Card } from 'nextra/components'
+
+
+# POST Request
+
+__0rbit__ enables an `ao` process to __FETCH ANY DATA__ using the data body to make a POST request on the Internet.
+
+This is done by sending the `data body` and the URL to the `0rbit` process, which will make the POST request to the `URL` with the `data body` and send the response back to the `ao` process.
+
+> `0rbit` process returns the data in the format the provided URL returns.
+
+## Fee
+
+To make a GET request, you must pay a fee in $0RBT per request. 
+
+This fee is charged for the following reasons:
+- To make a sustainable protocol. 
+- To prevent spamming of the network.
+- Provide incentives to the 0rbit Node Operators.
+
+Learn how to get $0RBT [here](/protocol/token#how-to-get-0rbt)
+
+## Request Methods
+
+Currently, 0rbit supports two methods to make a request:
+
+### Direct Request (Recommended)
+You can pay the fee directly from your process to the `0rbit` process, which requires you to have the $0RBT in your `ao` process before making the request.
+
+On every request, you must pay some fee in $0RBT (currently set to 1 $0RBT).
+
+This method accepts the following tags:
+| __Tag__ | __Description__ ||
+| --- | ----------- | ------- |
+| `["X-Action"]` | The type of request. | Required |
+| `["X-Url"]` | The URL from which you want to fetch the data. | Required |
+| `["X-Body"]` | The data body to be sent in the POST request. | Required | 
+| `["X-Min-Fee"]` | The minimum fee you will pay for the request. | Currently Optional |
+| `["X-Max-Fee"]` | The maximum fee you will pay for the request. | Currently Optional |
+| `["X-Valid-For"]` | The time for which the request is valid. | Optional |
+
+
+
+__Learn how to make a request by following the below guide__
+
+<Cards>
+  <Card  title="Your First POST Request" href="/developer/post-request/first-post-request" />
+</Cards>
+
+
+### Sponsored Request
+
+<Callout type="error" emoji="️🚫">
+  This is deprecated and will be removed in the future.
+</Callout>
+
+
+Currently, 0rbit provides 50 requests without any daily charges for every process.
+
+On every request, your quota for the day will be deducted by 1.
+
+__Learn how to make a Sponsored request by following the below guide__
+
+<Cards>
+  <Card  title="Sponsored POST Request" href="/developer/post-request/sponsored-post-request" />
+</Cards>

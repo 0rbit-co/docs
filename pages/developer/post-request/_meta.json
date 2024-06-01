@@ -1,0 +1,7 @@
+{
+    "first-post-request": "First POST request",
+    "sponsored-post-request": {
+        "title": "Sponsored POST request",
+        "display": "hidden"
+    }
+}
