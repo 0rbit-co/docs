@@ -75,7 +75,7 @@ export const HomePage = ({
                     <button>Get Started</button>
                   </a>
                   <a href="https://playground.0rbit.co/" className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400">
-                    <button>Builders' Kit</button>
+                    <button>Playground</button>
                   </a>
                 </div>
               </div>
