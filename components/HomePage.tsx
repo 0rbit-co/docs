@@ -61,7 +61,12 @@ export const HomePage = ({
                     `,
                   }}
                 />
-                <div className={cn("relative lg:text-[60px] text-[34px]", className)}>
+                <div
+                  className={cn(
+                    "relative lg:text-[60px] text-[34px]",
+                    className
+                  )}
+                >
                   {children}
                 </div>
               </div>
@@ -71,17 +76,29 @@ export const HomePage = ({
                   <span className="font-semibold">ao</span>.
                 </div>
                 <div className="flex justify-start pt-8 pl-6 gap-4">
-                  <a href="/developer" className="flex text-center p-2 font-bold rounded-xl bg-orange-400">
+                  <a
+                    href="/developer"
+                    className="flex text-center p-2 font-bold rounded-xl bg-orange-400"
+                  >
                     <button>Get Started</button>
                   </a>
-                  <a href="https://playground.0rbit.co/" className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400">
+                  <a
+                    href="https://playground.0rbit.co/"
+                    className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400"
+                    target="_blank"
+                  >
                     <button>Playground</button>
                   </a>
                 </div>
               </div>
             </div>
             <div className="w-full lg:w-1/2 flex justify-center items-center pb-4">
-              <Image src="/images/intro-diagram.svg" alt="image" width={1000} height={1000} />
+              <Image
+                src="/images/intro-diagram.svg"
+                alt="image"
+                width={1000}
+                height={1000}
+              />
             </div>
           </div>
           <div className="h-[1px] bg-white/30 mt-10"></div>
