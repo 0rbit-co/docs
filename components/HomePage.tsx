@@ -71,12 +71,12 @@ export const HomePage = ({
                   <span className="font-semibold">ao</span>.
                 </div>
                 <div className="flex justify-start pt-8 pl-6 gap-4">
-                  <button className="flex text-center p-2 font-bold rounded-xl bg-orange-400">
-                    Get Started
-                  </button>
-                  <button className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400">
-                    Builders' Kit
-                  </button>
+                  <a href="/developer" className="flex text-center p-2 font-bold rounded-xl bg-orange-400">
+                    <button>Get Started</button>
+                  </a>
+                  <a href="https://playground.0rbit.co/" className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400">
+                    <button>Builders' Kit</button>
+                  </a>
                 </div>
               </div>
             </div>
