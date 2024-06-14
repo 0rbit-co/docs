@@ -5,6 +5,14 @@ import React from "react";
 import Card from "./Card";
 import Image from "next/image";
 
+const event = ({ action, category, label, value }: any) => {
+  (window as any).gtag("event", action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+  });
+};
+
 export const HomePage = ({
   children,
   className,
@@ -28,6 +36,15 @@ export const HomePage = ({
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
+
+  const handleLinkClick = (label: string) => {
+    event({
+      action: "click_link",
+      category: "HomePage",
+      label,
+    });
+  };
+
   return (
     <div className="lg:p-10 lg:pb-0 p-2">
       <div className="flex justify-center items-center">
@@ -79,6 +96,7 @@ export const HomePage = ({
                   <a
                     href="/developer"
                     className="flex text-center p-2 font-bold rounded-xl bg-orange-400"
+                    onClick={() => handleLinkClick("Get Started")}
                   >
                     <button>Get Started</button>
                   </a>
@@ -86,6 +104,7 @@ export const HomePage = ({
                     href="https://playground.0rbit.co/"
                     className="flex text-center p-2 font-bold rounded-xl bg-transparent border border-orange-400 text-orange-400"
                     target="_blank"
+                    onClick={() => handleLinkClick("Playground")}
                   >
                     <button>Playground</button>
                   </a>
@@ -115,6 +134,7 @@ export const HomePage = ({
                 text={card.text}
                 link={card.link}
                 last={key + 1 === cards.length}
+                onClick={() => handleLinkClick(card.title)}
               />
             );
           })}
@@ -123,7 +143,6 @@ export const HomePage = ({
     </div>
   );
 };
-
 
 export const Highlight = ({
   children,
