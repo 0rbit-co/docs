@@ -2,6 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { FaTwitter, FaDiscord, FaGithub } from "react-icons/fa";
 
+const event = ({ action, category, label }) => {
+  (window as any).gtag("event", action, {
+    event_category: category,
+    event_label: label,
+  });
+};
+
 const Footer = () => {
   const date = new Date();
   return (
@@ -22,13 +29,13 @@ const Footer = () => {
             </div>
           </div>
           <div className="mt-4 md:mt-0 md:ml-4 flex items-center">
-            <SocialLink href="https://twitter.com/0rbitco">
+            <SocialLink href="https://twitter.com/0rbitco" label="Twitter">
               <FaTwitter />
             </SocialLink>
-            <SocialLink href="https://discord.gg/JVSjqaKJgV">
+            <SocialLink href="https://discord.gg/JVSjqaKJgV" label="Discord">
               <FaDiscord />
             </SocialLink>
-            <SocialLink href="https://github.com/0rbit-co/">
+            <SocialLink href="https://github.com/0rbit-co/" label="Github">
               <FaGithub />
             </SocialLink>
           </div>
@@ -52,12 +59,19 @@ const Footer = () => {
   );
 };
 
-const SocialLink = ({ href, children }) => {
+const SocialLink = ({ href, children, label }) => {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() =>
+        event({
+          action: "click_social_link",
+          category: "Footer",
+          label,
+        })
+      }
       className="text-white text-xl mr-2 transition duration-300 ease-in-out transform hover:scale-110"
     >
       {children}
