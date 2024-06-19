@@ -19,19 +19,35 @@ const headProp = () => {
       <title>0rbit Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="0rbit Technical Documentation" />
-      <meta name="description" content="0rbit Technical Documentation | The Decentralized Oracle on AO" />
+      <meta
+        name="description"
+        content="0rbit Technical Documentation | The Decentralized Oracle on AO"
+      />
       <meta
         property="og:description"
-        content={frontMatter.description || "0rbit Technical Documentation | The Decentralized Oracle on AO"}
+        content={
+          frontMatter.description ||
+          "0rbit Technical Documentation | The Decentralized Oracle on AO"
+        }
       />
-      <meta property="og:image" content="/images/logo/main.svg" />
+      <meta
+        property="og:image"
+        content="https://www.0rbit.co/logos/ogBanner.jpeg"
+      />
+      <meta
+        property="og:image:secure_url"
+        content="https://www.0rbit.co/logos/ogBanner.jpeg"
+      />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || "0rbit"} />
       <meta
         property="twitter:image"
-        content="https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/logo.svg"
+        content="https://www.0rbit.co/logos/ogBanner.jpeg"
       ></meta>
-      <meta property="twitter:title" content="0rbit Technical Documentation"></meta>
+      <meta
+        property="twitter:title"
+        content="0rbit Technical Documentation"
+      ></meta>
       <meta
         property="twitter:description"
         content="0rbit Technical Documentation | The Decentralized Oracle on AO"
@@ -45,8 +61,9 @@ const config: DocsThemeConfig = {
   primaryHue: 37,
   docsRepositoryBase: "https://github.com/0rbit-co/docs/blob/main",
   useNextSeoProps() {
-    const { asPath } = useRouter()
-    let _titleTemplate: string = asPath === "/" ? "0rbit Docs" : "0rbit Docs | %s";
+    const { asPath } = useRouter();
+    let _titleTemplate: string =
+      asPath === "/" ? "0rbit Docs" : "0rbit Docs | %s";
 
     return {
       titleTemplate: _titleTemplate,
@@ -55,7 +72,8 @@ const config: DocsThemeConfig = {
         "0rbit Technical Documentation | The Decentralized Oracle on AO",
       openGraph: {
         title: "0rbit Technical Documentation",
-        description: "0rbit Technical Documentation | The Decentralized Oracle on AO",
+        description:
+          "0rbit Technical Documentation | The Decentralized Oracle on AO",
         images: [
           {
             url: "https://raw.githubusercontent.com/0rbit-co/docs/main/public/images/logo/logo.svg",
@@ -110,7 +128,13 @@ const config: DocsThemeConfig = {
     labels: "feedback",
   },
   navigation: true,
-  footer: { component: <div className=""><Footer /></div> },
+  footer: {
+    component: (
+      <div className="">
+        <Footer />
+      </div>
+    ),
+  },
 };
 
 export default config;
