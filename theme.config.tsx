@@ -40,6 +40,10 @@ const headProp = () => {
       />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={frontMatter.title || "0rbit"} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta
         property="twitter:image"
         content="https://www.0rbit.co/logos/ogBanner.jpeg"
